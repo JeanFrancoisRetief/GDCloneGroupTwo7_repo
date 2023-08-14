@@ -165,6 +165,14 @@ public class CameraScript : MonoBehaviour
             //Movement Oppertunity
             Debug.Log("Bonnie Tries to Move");
 
+            int bonnieSkillCheck = Random.Range(1,20);
+            if(BonnieDifficulty >= bonnieSkillCheck)
+            {
+                Debug.Log("Bonnie Moved!!!");
+
+
+            }
+
         }
     }
     private void Chica()
@@ -176,6 +184,14 @@ public class CameraScript : MonoBehaviour
 
             //Movement Oppertunity
             Debug.Log("Chica Tries to Move");
+
+            int chicaSkillCheck = Random.Range(1, 20);
+            if (ChicaDifficulty >= chicaSkillCheck)
+            {
+                Debug.Log("Chica Moved!!!");
+
+
+            }
 
         }
     }
@@ -189,6 +205,14 @@ public class CameraScript : MonoBehaviour
             //Movement Oppertunity
             Debug.Log("Freddy Tries to Move");
 
+            int freddySkillCheck = Random.Range(1, 20);
+            if (FreddyDifficulty >= freddySkillCheck)
+            {
+                Debug.Log("Freddy Moved!!!");
+
+
+            }
+
         }
     }
     private void Foxy()
@@ -200,6 +224,14 @@ public class CameraScript : MonoBehaviour
 
             //Movement Oppertunity
             Debug.Log("Foxy Tries to Move");
+
+            int foxySkillCheck = Random.Range(1, 20);
+            if (FoxyDifficulty >= foxySkillCheck)
+            {
+                Debug.Log("Foxy Moved!!!");
+
+
+            }
 
         }
     }

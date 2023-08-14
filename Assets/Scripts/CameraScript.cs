@@ -75,6 +75,7 @@ public class CameraScript : MonoBehaviour
 
     [Header("Game State")]
     public bool isGameActive; //false = in main menu
+    public bool inCams;
 
     [Header("AI")]
     //frame counters
@@ -102,6 +103,7 @@ public class CameraScript : MonoBehaviour
     public Location ChicaLocation;
     public Location FreddyLocation;
     public Location FoxyLocation;
+    public int FoxyStage;
     public enum Location
     {
         MainStage,
@@ -124,7 +126,8 @@ public class CameraScript : MonoBehaviour
     void Start()
     {
         //initial state
-        isGameActive = true;
+        isGameActive = true; //--------------------------------------------------------true for testing,    SET TO false FOR FINAL GAME!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!
+        inCams = false;      //--------------------------------------------------------false for testing,   SET TO true  FOR FINAL GAME!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!
 
         //initial cam
         MainStage.gameObject.SetActive(true);
@@ -140,6 +143,8 @@ public class CameraScript : MonoBehaviour
         chicaCounter = 0;
         freddyCounter = 0;
         foxyCounter = 0;
+
+        FoxyStage = 1;
     }
 
     // Update is called once per frame
@@ -151,10 +156,16 @@ public class CameraScript : MonoBehaviour
             Chica();
             Freddy();
             Foxy();
+            LocationTracker();
         }
     }
 
     //AI~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+    private void LocationTracker()
+    {
+
+    }
+
     private void Bonnie()
     {
         bonnieCounter++;
@@ -170,6 +181,27 @@ public class CameraScript : MonoBehaviour
             {
                 Debug.Log("Bonnie Moved!!!");
 
+                
+                if(BonnieLocation == Location.MainStage)
+                {
+                    BonnieLocation = Location.DiningArea;
+                }
+                if (BonnieLocation == Location.DiningArea)
+                {
+                    BonnieLocation = Location.BackStage;
+                }
+                if (BonnieLocation == Location.BackStage)
+                {
+                    BonnieLocation = Location.WestHall;
+                }
+                if (BonnieLocation == Location.WestHall)
+                {
+                    BonnieLocation = Location.WestHallCorner;
+                }
+                if (BonnieLocation == Location.WestHallCorner)
+                {
+                    BonnieLocation = Location.OFFICE; //danger zone
+                }
 
             }
 
@@ -191,6 +223,44 @@ public class CameraScript : MonoBehaviour
                 Debug.Log("Chica Moved!!!");
 
 
+                if (ChicaLocation == Location.MainStage)
+                {
+                    ChicaLocation = Location.DiningArea;
+                }
+
+                if ((ChicaLocation == Location.DiningArea) && (FreddyLocation != Location.Restrooms))
+                {
+                    ChicaLocation = Location.Restrooms;
+                }
+                else
+                {
+                    ChicaLocation = Location.DiningArea; //stays until freddy moves
+                }
+
+
+                if (ChicaLocation == Location.Restrooms)
+                {
+                    ChicaLocation = Location.Kitchen;
+                }
+                if (ChicaLocation == Location.Kitchen)
+                {
+                    ChicaLocation = Location.EastHall;
+                }
+
+                if ((ChicaLocation == Location.EastHall) && (FreddyLocation != Location.EastHallCorner))
+                {
+                    ChicaLocation = Location.EastHallCorner;
+                } 
+                else
+                {
+                    ChicaLocation = Location.EastHall; //stays until freddy resets
+                }
+
+                if (ChicaLocation == Location.EastHallCorner)
+                {
+                    ChicaLocation = Location.OFFICE; //danger zone
+                }
+      
             }
 
         }
@@ -211,6 +281,23 @@ public class CameraScript : MonoBehaviour
                 Debug.Log("Freddy Moved!!!");
 
 
+                if ((FreddyLocation == Location.MainStage) && (ChicaLocation != Location.Restrooms))
+                {
+                    FreddyLocation = Location.Restrooms;
+                }
+                else
+                {
+                    FreddyLocation = Location.MainStage; //freddy waits until chica moves
+                }
+
+                if((FreddyLocation == Location.Restrooms) && (ChicaLocation != Location.EastHallCorner))
+                {
+                    FreddyLocation = Location.EastHallCorner; //danger zone (not office)
+                }
+                else
+                {
+                    FreddyLocation = Location.Restrooms; //freddy waits until chica moves
+                }
             }
 
         }
@@ -218,6 +305,12 @@ public class CameraScript : MonoBehaviour
     private void Foxy()
     {
         foxyCounter++;
+
+        if (inCams)
+        {
+            foxyCounter = 0; //reset foxy timer
+        }
+
         if (foxyCounter >= 301) //frame counter
         {
             foxyCounter = 0; //reset counter
@@ -230,7 +323,11 @@ public class CameraScript : MonoBehaviour
             {
                 Debug.Log("Foxy Moved!!!");
 
-
+                FoxyStage++;
+                if(FoxyStage == 4)
+                {
+                    FoxyStage = 1;
+                }
             }
 
         }

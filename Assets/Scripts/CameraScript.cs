@@ -67,20 +67,108 @@ public class CameraScript : MonoBehaviour
     public Texture imgEastHallCornerChica;
     public Texture imgEastHallCornerFreddy;
 
+    [Header("Difficulty")]
+    public int BonnieDifficulty;
+    public int ChicaDifficulty;
+    public int FreddyDifficulty;
+    public int FoxyDifficulty;
+
+    [Header("Game State")]
+    public bool isGameActive; //false = in main menu
+
+    [Header("AI")]
+    public int bonnieCounter;
+    public int chicaCounter;
+    public int freddyCounter;
+    public int foxyCounter;
+
+    /*
+     Note:
+        From ExitScript
+    ---------------------
+    Application.targetFrameRate = 60;//lock frame rate;
+    ----------------------
+        Thus
+        if(____counter = 60)
+        {
+            One second has passed.
+        }
+     */
+
+    [Header("AI Locations")]
+    public Location BonnieLocation;
+    public Location ChicaLocation;
+    public Location FreddyLocation;
+    public Location FoxyLocation;
+    public enum Location
+    {
+        MainStage,
+        DiningArea,
+        BackStage,
+        PiratesCove,
+        Restrooms,
+        SupplyCloset,
+        Kitchen,
+        WestHall,
+        WestHallCorner,
+        EastHall,
+        EastHallCorner,
+        OFFICE
+    }
+    
+
+
     // Start is called before the first frame update
     void Start()
     {
+        //initial state
+        isGameActive = false;
+
+        //initial cam
         MainStage.gameObject.SetActive(true);
+        
+        //initial locations
+        BonnieLocation = Location.MainStage;
+        ChicaLocation = Location.MainStage;
+        FreddyLocation = Location.MainStage;
+        FoxyLocation = Location.PiratesCove;
+
+        //initital times
+        bonnieCounter = 0;
+        chicaCounter = 0;
+        freddyCounter = 0;
+        foxyCounter = 0;
     }
 
     // Update is called once per frame
     void Update()
     {
-        
+        if(isGameActive)
+        {
+            Bonnie();
+            Chica();
+            Freddy();
+            Foxy();
+        }
     }
 
     //AI~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+    private void Bonnie()
+    {
 
+    }
+    private void Chica()
+    {
+        
+    }
+    private void Freddy()
+    {
+
+    }
+    private void Foxy()
+    {
+
+    }
     //~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
     //Navigation~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~

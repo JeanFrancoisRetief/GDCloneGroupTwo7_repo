@@ -152,10 +152,12 @@ public class CameraScript : MonoBehaviour
     {
         if(isGameActive)
         {
-            Bonnie();
-            Chica();
             Freddy();
+            Chica();
+            Bonnie();
+            
             Foxy();
+
             LocationTracker();
         }
     }
@@ -163,6 +165,140 @@ public class CameraScript : MonoBehaviour
     //AI~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
     private void LocationTracker()
     {
+        //Main Stage
+        if((FreddyLocation == Location.MainStage) && (ChicaLocation == Location.MainStage) && (BonnieLocation == Location.MainStage))
+        {
+            MainStage.texture = imgStageFull;
+        }
+        else if ((FreddyLocation == Location.MainStage) && (ChicaLocation == Location.MainStage))
+        {
+            MainStage.texture = imgStageNoB;
+        } 
+        else if ((FreddyLocation == Location.MainStage))
+        {
+            MainStage.texture = imgStageNoBorC;
+        }
+        else
+        {
+            MainStage.texture = imgStageEmpty;
+        }
+
+        //Dining Area
+        if((BonnieLocation == Location.DiningArea) && (ChicaLocation == Location.DiningArea))
+        {
+            DiningArea.texture = imgDingingBandC;
+        }
+        else if ((BonnieLocation == Location.DiningArea) && (ChicaLocation != Location.DiningArea))
+        {
+            DiningArea.texture = imgDiningBonnie;
+        }
+        else if ((ChicaLocation == Location.DiningArea) && (BonnieLocation != Location.DiningArea))
+        {
+            DiningArea.texture = imgDiningChica;
+        }
+        else
+        {
+            DiningArea.texture = imgDiningEmpty;
+        }
+
+        //Backstage
+        if(BonnieLocation == Location.BackStage)
+        {
+            BackStage.texture = imgBackstageBonnie;
+        }
+        else
+        {
+            BackStage.texture = imgBackstageEmpty;
+        }
+
+        //PirateCove
+        if(FoxyStage == 1)
+        {
+            PiratesCove.texture = imgPiratePhase1;
+        }
+        else if (FoxyStage == 2)
+        {
+            PiratesCove.texture = imgPiratePhase2;
+        }
+        else if (FoxyStage == 3)
+        {
+            PiratesCove.texture = imgPiratePhase3;
+        }
+        else
+        {
+            PiratesCove.texture = imgPiratePhase4;
+        }
+
+        //Restrooms
+        if (FreddyLocation == Location.Restrooms)
+        {
+            Restrooms.texture = imgRestroomsFreddy;
+        } 
+        else if (ChicaLocation == Location.Restrooms)
+        {
+            Restrooms.texture = imgRestroomsChica;
+        }
+        else
+        {
+            Restrooms.texture = imgRestroomsEmpty;
+        }
+
+        //Closet
+        if (BonnieLocation == Location.SupplyCloset)
+        {
+            SupplyCloset.texture = imgClosetBonnie;
+        }
+        else
+        {
+            SupplyCloset.texture = imgClosetEmpty;
+        }
+
+        //Kitchen doent change
+
+        //West Hall
+        if (BonnieLocation == Location.WestHall)
+        {
+            WestHall.texture = imgWestHallBonnie;
+        }
+        else
+        {
+            WestHall.texture = imgWestHallEmpty;
+        }
+
+        //West Hall Corner
+        if (BonnieLocation == Location.WestHallCorner)
+        {
+            WestHallCorner.texture = imgWestHallCornerBonnie;
+        }
+        else
+        {
+            WestHallCorner.texture = imgWestHallCornerEmpty;
+        }
+
+        //East Hall
+        if (ChicaLocation == Location.EastHall)
+        {
+            EastHall.texture = imgEastHallChica;
+        }
+        else
+        {
+            EastHall.texture = imgEastHallEmpty;
+        }
+
+        //East Hall Corner
+        if (ChicaLocation == Location.EastHallCorner)
+        {
+            EastHallCorner.texture = imgEastHallCornerChica;
+        }
+        else if (FreddyLocation == Location.EastHallCorner)
+        {
+            EastHallCorner.texture = imgEastHallCornerFreddy;
+        }
+        else
+        {
+            EastHallCorner.texture = imgEastHallCornerEmpty;
+        }
+
 
     }
 
@@ -179,28 +315,38 @@ public class CameraScript : MonoBehaviour
             int bonnieSkillCheck = Random.Range(1,20);
             if(BonnieDifficulty >= bonnieSkillCheck)
             {
-                Debug.Log("Bonnie Moved!!!");
+                
 
                 
                 if(BonnieLocation == Location.MainStage)
                 {
                     BonnieLocation = Location.DiningArea;
+                    Debug.Log("Bonnie in Dining Area");
                 }
-                if (BonnieLocation == Location.DiningArea)
+                else if (BonnieLocation == Location.DiningArea)
                 {
                     BonnieLocation = Location.BackStage;
+                    Debug.Log("Bonnie in BackStage");
                 }
-                if (BonnieLocation == Location.BackStage)
+                else if (BonnieLocation == Location.BackStage)
                 {
                     BonnieLocation = Location.WestHall;
+                    Debug.Log("Bonnie in WestHall");
                 }
-                if (BonnieLocation == Location.WestHall)
+                else if(BonnieLocation == Location.WestHall)
+                {
+                    BonnieLocation = Location.SupplyCloset;
+                    Debug.Log("Bonnie in Closet");
+                }
+                else if (BonnieLocation == Location.SupplyCloset)
                 {
                     BonnieLocation = Location.WestHallCorner;
+                    Debug.Log("Bonnie in West Hall Corner");
                 }
-                if (BonnieLocation == Location.WestHallCorner)
+                else if (BonnieLocation == Location.WestHallCorner)
                 {
                     BonnieLocation = Location.OFFICE; //danger zone
+                    Debug.Log("Bonnie in OFFICE");
                 }
 
             }
@@ -223,40 +369,27 @@ public class CameraScript : MonoBehaviour
                 Debug.Log("Chica Moved!!!");
 
 
-                if (ChicaLocation == Location.MainStage)
+                if ((ChicaLocation == Location.MainStage) && (BonnieLocation != Location.MainStage))
                 {
                     ChicaLocation = Location.DiningArea;
                 }
-
-                if ((ChicaLocation == Location.DiningArea) && (FreddyLocation != Location.Restrooms))
+                else if ((ChicaLocation == Location.DiningArea) && (FreddyLocation != Location.Restrooms))
                 {
                     ChicaLocation = Location.Restrooms;
                 }
-                else
-                {
-                    ChicaLocation = Location.DiningArea; //stays until freddy moves
-                }
-
-
-                if (ChicaLocation == Location.Restrooms)
+                else if (ChicaLocation == Location.Restrooms)
                 {
                     ChicaLocation = Location.Kitchen;
                 }
-                if (ChicaLocation == Location.Kitchen)
+                else if (ChicaLocation == Location.Kitchen)
                 {
                     ChicaLocation = Location.EastHall;
                 }
-
-                if ((ChicaLocation == Location.EastHall) && (FreddyLocation != Location.EastHallCorner))
+                else if ((ChicaLocation == Location.EastHall) && (FreddyLocation != Location.EastHallCorner))
                 {
                     ChicaLocation = Location.EastHallCorner;
                 } 
-                else
-                {
-                    ChicaLocation = Location.EastHall; //stays until freddy resets
-                }
-
-                if (ChicaLocation == Location.EastHallCorner)
+                else if (ChicaLocation == Location.EastHallCorner)
                 {
                     ChicaLocation = Location.OFFICE; //danger zone
                 }
@@ -281,23 +414,16 @@ public class CameraScript : MonoBehaviour
                 Debug.Log("Freddy Moved!!!");
 
 
-                if ((FreddyLocation == Location.MainStage) && (ChicaLocation != Location.Restrooms))
+                if ((FreddyLocation == Location.MainStage) && (ChicaLocation != Location.Restrooms) && (ChicaLocation != Location.MainStage))
                 {
                     FreddyLocation = Location.Restrooms;
+                    Debug.Log("Freddy Moved to the restrooms");
                 }
-                else
-                {
-                    FreddyLocation = Location.MainStage; //freddy waits until chica moves
-                }
-
-                if((FreddyLocation == Location.Restrooms) && (ChicaLocation != Location.EastHallCorner))
+                else if((FreddyLocation == Location.Restrooms) && (ChicaLocation != Location.EastHallCorner))
                 {
                     FreddyLocation = Location.EastHallCorner; //danger zone (not office)
                 }
-                else
-                {
-                    FreddyLocation = Location.Restrooms; //freddy waits until chica moves
-                }
+                
             }
 
         }
@@ -326,7 +452,11 @@ public class CameraScript : MonoBehaviour
                 FoxyStage++;
                 if(FoxyStage == 4)
                 {
-                    FoxyStage = 1;
+                    FoxyLocation = Location.OFFICE;
+
+                    //if door closed --> FoxyStage = 1;
+
+
                 }
             }
 

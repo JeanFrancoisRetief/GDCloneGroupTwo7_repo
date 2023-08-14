@@ -2920,11 +2920,12 @@ MonoBehaviour:
   imgEastHallCornerEmpty: {fileID: 2800000, guid: 139fba2afb0dd3a4ebafe017988c17cd, type: 3}
   imgEastHallCornerChica: {fileID: 2800000, guid: 996f24f735b84df4a810cf848dd07811, type: 3}
   imgEastHallCornerFreddy: {fileID: 2800000, guid: 21723fe63c91fb1418d0cabd0d55b542, type: 3}
-  BonnieDifficulty: 0
-  ChicaDifficulty: 0
-  FreddyDifficulty: 0
-  FoxyDifficulty: 0
+  BonnieDifficulty: 5
+  ChicaDifficulty: 5
+  FreddyDifficulty: 5
+  FoxyDifficulty: 5
   isGameActive: 0
+  inCams: 0
   bonnieCounter: 0
   chicaCounter: 0
   freddyCounter: 0
@@ -2933,6 +2934,7 @@ MonoBehaviour:
   ChicaLocation: 0
   FreddyLocation: 0
   FoxyLocation: 0
+  FoxyStage: 0
 --- !u!1 &1665108480
 GameObject:
   m_ObjectHideFlags: 0

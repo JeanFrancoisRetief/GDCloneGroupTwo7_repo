@@ -649,7 +649,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_Texture: {fileID: 2800000, guid: 31d0e26d792a4c34589428909c368b10, type: 3}
+  m_Texture: {fileID: 2800000, guid: 466d6547585a8074dbb75274acf48f08, type: 3}
   m_UVRect:
     serializedVersion: 2
     x: 0
@@ -674,6 +674,7 @@ GameObject:
   m_Component:
   - component: {fileID: 1660950344}
   - component: {fileID: 1660950343}
+  - component: {fileID: 1660950345}
   m_Layer: 0
   m_Name: ScriptHolder
   m_TagString: Untagged
@@ -707,6 +708,22 @@ Transform:
   m_Father: {fileID: 0}
   m_RootOrder: 2
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &1660950345
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1660950342}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: d489c9d0dc620ca4980456b9b8a4703c, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  imgStageFull: {fileID: 2800000, guid: e24e3330fcd7a6249aac3eea12541631, type: 3}
+  imgStageNoB: {fileID: 2800000, guid: 236586992e4842d46b82687f72b80cab, type: 3}
+  imgStageNoBorC: {fileID: 2800000, guid: c44ee35cc9c7872479704975baf4f797, type: 3}
+  imgStageEmpty: {fileID: 2800000, guid: ecc81061da04bb448ab1537bad313781, type: 3}
 --- !u!1 &1861996152
 GameObject:
   m_ObjectHideFlags: 0

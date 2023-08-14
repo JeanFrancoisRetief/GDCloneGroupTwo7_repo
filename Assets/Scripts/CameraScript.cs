@@ -77,10 +77,12 @@ public class CameraScript : MonoBehaviour
     public bool isGameActive; //false = in main menu
 
     [Header("AI")]
-    public int bonnieCounter;
-    public int chicaCounter;
-    public int freddyCounter;
-    public int foxyCounter;
+    //frame counters
+    public int bonnieCounter; //every 4.97 sec = 298,2 frames
+    public int chicaCounter; //every 4.98 sec = 298,8 frames
+    public int freddyCounter; //every 3.02 sec = 181,2 frames
+    public int foxyCounter; //every 5.01 sec = 300,6 frames
+
 
     /*
      Note:
@@ -122,7 +124,7 @@ public class CameraScript : MonoBehaviour
     void Start()
     {
         //initial state
-        isGameActive = false;
+        isGameActive = true;
 
         //initial cam
         MainStage.gameObject.SetActive(true);
@@ -155,19 +157,51 @@ public class CameraScript : MonoBehaviour
     //AI~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
     private void Bonnie()
     {
+        bonnieCounter++;
+        if(bonnieCounter >= 298) //frame counter
+        {
+            bonnieCounter = 0; //reset counter
 
+            //Movement Oppertunity
+            Debug.Log("Bonnie Tries to Move");
+
+        }
     }
     private void Chica()
     {
-        
+        chicaCounter++;
+        if (chicaCounter >= 299) //frame counter
+        {
+            chicaCounter = 0; //reset counter
+
+            //Movement Oppertunity
+            Debug.Log("Chica Tries to Move");
+
+        }
     }
     private void Freddy()
     {
+        freddyCounter++;
+        if (freddyCounter >= 181) //frame counter
+        {
+            freddyCounter = 0; //reset counter
 
+            //Movement Oppertunity
+            Debug.Log("Freddy Tries to Move");
+
+        }
     }
     private void Foxy()
     {
+        foxyCounter++;
+        if (foxyCounter >= 301) //frame counter
+        {
+            foxyCounter = 0; //reset counter
 
+            //Movement Oppertunity
+            Debug.Log("Foxy Tries to Move");
+
+        }
     }
     //~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 

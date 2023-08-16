@@ -5405,6 +5405,9 @@ MonoBehaviour:
   threeBars: {fileID: 599889756}
   fourBars: {fileID: 899339743}
   fiveBars: {fileID: 1054482752}
+  powerLeft: 100
+  decreaseSpeed: 0.1
+  powerText: {fileID: 1644580524}
 --- !u!1 &1665108480
 GameObject:
   m_ObjectHideFlags: 0

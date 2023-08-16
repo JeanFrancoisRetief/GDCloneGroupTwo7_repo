@@ -41,6 +41,18 @@ public class OfficeScript : MonoBehaviour
     public GameObject threeBars;
     public GameObject fourBars;
     public GameObject fiveBars;
+
+    public float powerLeft = 100f;
+    public float decreaseSpeed;
+   
+    
+
+    private float decVarA1 = 0;
+    private float decVarB1 = 0;
+    private float decVarC1 = 0;
+    private float decVarD1 = 0;
+    private float decVarE1 = 0;
+    public Text powerText; // Reference to the Text UI element
     void Start()
     {
         initialPosition = backgroundImage.transform.position;
@@ -68,22 +80,26 @@ public class OfficeScript : MonoBehaviour
         {
             AreLeftLightsActive = true;
             varA = 1;
+            decVarA1 = 0.3f;
             
         }
         else
         {
             AreLeftLightsActive = false;
             varA = 0;
+            decVarA1 = 0f;
         }
         if (RightLightsContainer.activeSelf)
         {
             AreRightLightsActive = true;
             varB = 1;
+            decVarB1 = 0.3f;
         }
         else
         {
             AreRightLightsActive = false;
             varB = 0;
+            decVarB1 = 0f;
         }
 
         //sets the camera navigation to active is space bar is clicked, if already active and spacebar is clicked then deactivates camNav
@@ -92,12 +108,14 @@ public class OfficeScript : MonoBehaviour
             camNav.SetActive(false);
             AreCamsActive = false;
             varC = 0;
+            decVarC1 = 0f;
         }
         else if(Input.GetKeyDown(KeyCode.Space))
         {
             camNav.SetActive(true);
             AreCamsActive = true;
             varC = 1;
+            decVarC1 = 0.3f;
 
         }
 
@@ -143,6 +161,11 @@ public class OfficeScript : MonoBehaviour
         {
             fiveBars.SetActive(false);
         }
+        decreaseSpeed = decVarA1 + decVarB1 + decVarC1 + decVarD1 + decVarE1 + 0.2f;
+        powerLeft -= decreaseSpeed * Time.deltaTime;
+        powerLeft = Mathf.Max(powerLeft, 0f);
+
+        UpdatePowerText(); // Call the method to update the UI text
 
 
     }
@@ -154,13 +177,14 @@ public class OfficeScript : MonoBehaviour
             LeftDoor.SetActive(false);
             IsLeftDoorClosed = false;
             varD = 0;
-            
+            decVarD1 = 0f;
         }
         else
         {
             LeftDoor.SetActive(true);
             IsLeftDoorClosed = true;
             varD = 1;
+            decVarD1 = 0.3f;
         }
     }
 
@@ -171,14 +195,25 @@ public class OfficeScript : MonoBehaviour
             RightDoor.SetActive(false);
             IsRightDoorClosed = false;
             varE = 0;
+            decVarE1 = 0f;
         }
         else
         {
             RightDoor.SetActive(true);
             IsRightDoorClosed = true;
             varE = 1;
+            decVarE1 = 0.3f;
         }
     }
 
-    
+    private void UpdatePowerText()
+    {
+        // Update the Text UI element's text with the current powerLeft value
+        if (powerText != null)
+        {
+            powerText.text = powerLeft.ToString("F0") + "%"; // Format as whole number
+        }
+    }
+
+
 }

@@ -27,10 +27,25 @@ public class OfficeScript : MonoBehaviour
     public GameObject camNav;
 
     public bool AreCamsActive;
+
+    private int varA = 0;
+    private int varB = 0;
+    private int varC = 0;
+    private int varD = 0;
+    private int varE = 0;
+
+    public int totalActiveBars;
+
+    public GameObject oneBar;
+    public GameObject twoBars;
+    public GameObject threeBars;
+    public GameObject fourBars;
+    public GameObject fiveBars;
     void Start()
     {
         initialPosition = backgroundImage.transform.position;
         screenWidth = Screen.width;
+        
     }
 
 
@@ -52,18 +67,23 @@ public class OfficeScript : MonoBehaviour
         if (LeftLightsContainer.activeSelf)
         {
             AreLeftLightsActive = true;
+            varA = 1;
+            
         }
         else
         {
             AreLeftLightsActive = false;
+            varA = 0;
         }
         if (RightLightsContainer.activeSelf)
         {
             AreRightLightsActive = true;
+            varB = 1;
         }
         else
         {
             AreRightLightsActive = false;
+            varB = 0;
         }
 
         //sets the camera navigation to active is space bar is clicked, if already active and spacebar is clicked then deactivates camNav
@@ -71,13 +91,60 @@ public class OfficeScript : MonoBehaviour
         {
             camNav.SetActive(false);
             AreCamsActive = false;
+            varC = 0;
         }
         else if(Input.GetKeyDown(KeyCode.Space))
         {
             camNav.SetActive(true);
             AreCamsActive = true;
+            varC = 1;
 
         }
+
+        totalActiveBars = varA + varB + varC + varD + varE + 1;
+
+        if(totalActiveBars == 1)
+        {
+            oneBar.SetActive(true);
+        }
+        else
+        {
+            oneBar.SetActive(false);
+        }
+        if(totalActiveBars == 2)
+        {
+            twoBars.SetActive(true);
+        }
+        else
+        {
+            twoBars.SetActive(false);
+        }
+        if(totalActiveBars == 3)
+        {
+            threeBars.SetActive(true);
+        }
+        else
+        {
+            threeBars.SetActive(false);
+        }
+        if(totalActiveBars == 4)
+        {
+            fourBars.SetActive(true);
+        }
+        else
+        {
+            fourBars.SetActive(false);
+        }
+        if (totalActiveBars == 5)
+        {
+            fiveBars.SetActive(true);
+        }
+        else
+        {
+            fiveBars.SetActive(false);
+        }
+
+
     }
 
     public void OnLeftDoorButtonClick()
@@ -86,11 +153,14 @@ public class OfficeScript : MonoBehaviour
         {
             LeftDoor.SetActive(false);
             IsLeftDoorClosed = false;
+            varD = 0;
+            
         }
         else
         {
             LeftDoor.SetActive(true);
             IsLeftDoorClosed = true;
+            varD = 1;
         }
     }
 
@@ -100,12 +170,15 @@ public class OfficeScript : MonoBehaviour
         {
             RightDoor.SetActive(false);
             IsRightDoorClosed = false;
+            varE = 0;
         }
         else
         {
             RightDoor.SetActive(true);
             IsRightDoorClosed = true;
+            varE = 1;
         }
     }
 
+    
 }

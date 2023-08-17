@@ -5,6 +5,8 @@ using UnityEngine.UI;
 
 public class OfficeScript : MonoBehaviour
 {
+    public CameraScript CameraScript;
+
     public float panSpeed = 3f; // Speed of background panning
     public RawImage backgroundImage; // Reference to the RawImage component
 
@@ -109,6 +111,8 @@ public class OfficeScript : MonoBehaviour
             AreCamsActive = false;
             varC = 0;
             decVarC1 = 0f;
+
+            CameraScript.inCams = false;
         }
         else if(Input.GetKeyDown(KeyCode.Space))
         {
@@ -117,6 +121,7 @@ public class OfficeScript : MonoBehaviour
             varC = 1;
             decVarC1 = 0.3f;
 
+            CameraScript.inCams = true;
         }
 
         totalActiveBars = varA + varB + varC + varD + varE + 1;
@@ -162,10 +167,15 @@ public class OfficeScript : MonoBehaviour
             fiveBars.SetActive(false);
         }
         decreaseSpeed = decVarA1 + decVarB1 + decVarC1 + decVarD1 + decVarE1 + 0.2f;
-        powerLeft -= decreaseSpeed * Time.deltaTime;
-        powerLeft = Mathf.Max(powerLeft, 0f);
 
-        UpdatePowerText(); // Call the method to update the UI text
+        if(CameraScript.isGameActive == true)
+        {
+            powerLeft -= decreaseSpeed * Time.deltaTime;
+            powerLeft = Mathf.Max(powerLeft, 0f);
+
+            UpdatePowerText(); // Call the method to update the UI text
+        }
+        
 
 
     }

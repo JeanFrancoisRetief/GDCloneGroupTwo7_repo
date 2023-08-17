@@ -25,6 +25,7 @@ public class MainMenuScript : MonoBehaviour
 
     [Header("Menu Image")]
     public int freddyImageNumber;
+    public int freddyImageCounter;
     public GameObject freddyImg1;
     public GameObject freddyImg2;
     public GameObject freddyImg3;
@@ -126,7 +127,7 @@ public class MainMenuScript : MonoBehaviour
 
     private void Update()
     {
-        #region time
+        #region time + difficulty increases
 
         if (CameraScript.isGameActive == true)
         {
@@ -140,14 +141,30 @@ public class MainMenuScript : MonoBehaviour
         else if (frameCounter == 10800)
         {
             time = 2;
+            if (nightCounter != 7)
+            {
+                CameraScript.BonnieDifficulty += 1;
+            }
         }
         else if (frameCounter == 16200)
         {
             time = 3;
+            if (nightCounter != 7)
+            {
+                CameraScript.BonnieDifficulty += 1;
+                CameraScript.ChicaDifficulty += 1;
+                CameraScript.FoxyDifficulty += 1;
+            }
         }
         else if (frameCounter == 21600)
         {
             time = 4;
+            if (nightCounter != 7)
+            {
+                CameraScript.BonnieDifficulty += 1;
+                CameraScript.ChicaDifficulty += 1;
+                CameraScript.FoxyDifficulty += 1;
+            }    
         }
         else if (frameCounter == 27000)
         {
@@ -167,26 +184,13 @@ public class MainMenuScript : MonoBehaviour
         FreddyDifficultyTxt.text = CameraScript.FreddyDifficulty.ToString();
         FoxyDifficultyTxt.text = CameraScript.FoxyDifficulty.ToString();
 
-        #region difficulty increases overtime
-        
-        if (nightCounter != 7)
+        #region freddy image
+
+        freddyImageCounter++;
+        if (freddyImageCounter == 120)
         {
-            if (time == 2)
-            {
-                CameraScript.BonnieDifficulty += 1;
-            }
-            else if (time == 3)
-            {
-                CameraScript.BonnieDifficulty += 1;
-                CameraScript.ChicaDifficulty += 1;
-                CameraScript.FoxyDifficulty += 1;
-            }
-            else if (time == 4)
-            {
-                CameraScript.BonnieDifficulty += 1;
-                CameraScript.ChicaDifficulty += 1;
-                CameraScript.FoxyDifficulty += 1;
-            }
+            CheckFreddyImage();
+            freddyImageCounter = 0;
         }
 
         #endregion
@@ -256,7 +260,7 @@ public class MainMenuScript : MonoBehaviour
 
     #endregion
 
-    public IEnumerator CheckFreddyImgNumber()
+    public void CheckFreddyImage()
     {
         freddyImageNumber = Random.Range(0, 7);
 
@@ -312,7 +316,5 @@ public class MainMenuScript : MonoBehaviour
         }
 
         #endregion
-
-        yield return new WaitForSeconds(5);
     }
 }

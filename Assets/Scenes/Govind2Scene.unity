@@ -759,11 +759,11 @@ MonoBehaviour:
     m_SelectedTrigger: Selected
     m_DisabledTrigger: Disabled
   m_Interactable: 1
-  m_TargetGraphic: {fileID: 85271784}
+  m_TargetGraphic: {fileID: 1019115194}
   m_OnClick:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 0}
+      - m_Target: {fileID: 1660950348}
         m_TargetAssemblyTypeName: MainMenuScript, Assembly-CSharp
         m_MethodName: IncreaseBonnieDifficulty
         m_Mode: 1
@@ -2477,11 +2477,11 @@ MonoBehaviour:
     m_SelectedTrigger: Selected
     m_DisabledTrigger: Disabled
   m_Interactable: 1
-  m_TargetGraphic: {fileID: 346783796}
+  m_TargetGraphic: {fileID: 1019115194}
   m_OnClick:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 0}
+      - m_Target: {fileID: 1660950348}
         m_TargetAssemblyTypeName: MainMenuScript, Assembly-CSharp
         m_MethodName: DecreaseChicaDifficulty
         m_Mode: 1
@@ -2846,11 +2846,11 @@ MonoBehaviour:
     m_SelectedTrigger: Selected
     m_DisabledTrigger: Disabled
   m_Interactable: 1
-  m_TargetGraphic: {fileID: 376228252}
+  m_TargetGraphic: {fileID: 1019115194}
   m_OnClick:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 0}
+      - m_Target: {fileID: 1660950348}
         m_TargetAssemblyTypeName: MainMenuScript, Assembly-CSharp
         m_MethodName: IncreaseFoxyDifficulty
         m_Mode: 1
@@ -3899,7 +3899,7 @@ MonoBehaviour:
   m_OnClick:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 1955779974}
+      - m_Target: {fileID: 520360136}
         m_TargetAssemblyTypeName: UnityEngine.GameObject, UnityEngine
         m_MethodName: SetActive
         m_Mode: 6
@@ -4228,11 +4228,11 @@ MonoBehaviour:
     m_SelectedTrigger: Selected
     m_DisabledTrigger: Disabled
   m_Interactable: 1
-  m_TargetGraphic: {fileID: 663876076}
+  m_TargetGraphic: {fileID: 1019115194}
   m_OnClick:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 0}
+      - m_Target: {fileID: 1660950348}
         m_TargetAssemblyTypeName: MainMenuScript, Assembly-CSharp
         m_MethodName: DecreaseBonnieDifficulty
         m_Mode: 1
@@ -4365,7 +4365,7 @@ MonoBehaviour:
   m_OnClick:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 0}
+      - m_Target: {fileID: 1660950348}
         m_TargetAssemblyTypeName: MainMenuScript, Assembly-CSharp
         m_MethodName: DecreaseFreddyDifficulty
         m_Mode: 1
@@ -5376,11 +5376,11 @@ MonoBehaviour:
     m_SelectedTrigger: Selected
     m_DisabledTrigger: Disabled
   m_Interactable: 1
-  m_TargetGraphic: {fileID: 933889646}
+  m_TargetGraphic: {fileID: 1019115194}
   m_OnClick:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 0}
+      - m_Target: {fileID: 1660950348}
         m_TargetAssemblyTypeName: MainMenuScript, Assembly-CSharp
         m_MethodName: IncreaseChicaDifficulty
         m_Mode: 1
@@ -5746,7 +5746,7 @@ MonoBehaviour:
   m_OnClick:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 0}
+      - m_Target: {fileID: 1660950348}
         m_TargetAssemblyTypeName: MainMenuScript, Assembly-CSharp
         m_MethodName: IncreaseFreddyDifficulty
         m_Mode: 1
@@ -9050,7 +9050,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.3121875, y: 0.17951854}
   m_AnchorMax: {x: 0.3121875, y: 0.17951854}
-  m_AnchoredPosition: {x: 9.329407, y: -6.5057373}
+  m_AnchoredPosition: {x: 9.329346, y: -6.5057373}
   m_SizeDelta: {x: 213.2406, y: 95.3407}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &1644580524
@@ -9353,6 +9353,7 @@ MonoBehaviour:
   FreddyDifficultyTxt: {fileID: 1501065284}
   FoxyDifficultyTxt: {fileID: 955903221}
   freddyImageNumber: 0
+  freddyImageCounter: 0
   freddyImg1: {fileID: 976669386}
   freddyImg2: {fileID: 56213735}
   freddyImg3: {fileID: 269225250}
@@ -10927,11 +10928,11 @@ MonoBehaviour:
     m_SelectedTrigger: Selected
     m_DisabledTrigger: Disabled
   m_Interactable: 1
-  m_TargetGraphic: {fileID: 1865715998}
+  m_TargetGraphic: {fileID: 1019115194}
   m_OnClick:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 0}
+      - m_Target: {fileID: 1660950348}
         m_TargetAssemblyTypeName: MainMenuScript, Assembly-CSharp
         m_MethodName: DecreaseFoxyDifficulty
         m_Mode: 1

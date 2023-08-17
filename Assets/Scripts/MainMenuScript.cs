@@ -317,4 +317,9 @@ public class MainMenuScript : MonoBehaviour
 
         #endregion
     }
+
+    public void EnableGame()
+    {
+        CameraScript.isGameActive = true;
+    }
 }

@@ -167,10 +167,15 @@ public class OfficeScript : MonoBehaviour
             fiveBars.SetActive(false);
         }
         decreaseSpeed = decVarA1 + decVarB1 + decVarC1 + decVarD1 + decVarE1 + 0.2f;
-        powerLeft -= decreaseSpeed * Time.deltaTime;
-        powerLeft = Mathf.Max(powerLeft, 0f);
 
-        UpdatePowerText(); // Call the method to update the UI text
+        if(CameraScript.isGameActive == true)
+        {
+            powerLeft -= decreaseSpeed * Time.deltaTime;
+            powerLeft = Mathf.Max(powerLeft, 0f);
+
+            UpdatePowerText(); // Call the method to update the UI text
+        }
+        
 
 
     }

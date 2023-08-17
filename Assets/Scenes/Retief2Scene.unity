@@ -9323,6 +9323,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 3e0a21c650c06344f84eb0b76979075f, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  CameraScript: {fileID: 1660950345}
   panSpeed: 3
   backgroundImage: {fileID: 1656568094}
   LeftLightsContainer: {fileID: 165690875}

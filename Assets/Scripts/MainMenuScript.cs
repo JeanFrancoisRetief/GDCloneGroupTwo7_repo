@@ -212,9 +212,9 @@ public class MainMenuScript : MonoBehaviour
     {
         nightCounter = 2;
 
-        CameraScript.BonnieDifficulty = 0;
-        CameraScript.ChicaDifficulty = 3;
-        CameraScript.FreddyDifficulty = 1;
+        CameraScript.BonnieDifficulty = 3;
+        CameraScript.ChicaDifficulty = 1;
+        CameraScript.FreddyDifficulty = 0;
         CameraScript.FoxyDifficulty = 1;
     }
 
@@ -222,9 +222,9 @@ public class MainMenuScript : MonoBehaviour
     {
         nightCounter = 3;
 
-        CameraScript.BonnieDifficulty = 1;
-        CameraScript.ChicaDifficulty = 0;
-        CameraScript.FreddyDifficulty = 5;
+        CameraScript.BonnieDifficulty = 3; //should be 0, but not with how our version works
+        CameraScript.ChicaDifficulty = 5;
+        CameraScript.FreddyDifficulty = 1;
         CameraScript.FoxyDifficulty = 2;
     }
 
@@ -232,9 +232,9 @@ public class MainMenuScript : MonoBehaviour
     {
         nightCounter = 4;
 
-        CameraScript.BonnieDifficulty = Random.Range(0, 2);
-        CameraScript.ChicaDifficulty = 2;
-        CameraScript.FreddyDifficulty = 4;
+        CameraScript.BonnieDifficulty = 2;
+        CameraScript.ChicaDifficulty = 4;
+        CameraScript.FreddyDifficulty = Random.Range(0, 2);
         CameraScript.FoxyDifficulty = 6;
     }
 
@@ -242,9 +242,9 @@ public class MainMenuScript : MonoBehaviour
     {
         nightCounter = 5;
 
-        CameraScript.BonnieDifficulty = 3;
-        CameraScript.ChicaDifficulty = 5;
-        CameraScript.FreddyDifficulty = 7;
+        CameraScript.BonnieDifficulty = 5;
+        CameraScript.ChicaDifficulty = 7;
+        CameraScript.FreddyDifficulty = 3;
         CameraScript.FoxyDifficulty = 5;
     }
 
@@ -252,9 +252,9 @@ public class MainMenuScript : MonoBehaviour
     {
         nightCounter = 6;
 
-        CameraScript.BonnieDifficulty = 4;
-        CameraScript.ChicaDifficulty = 10;
-        CameraScript.FreddyDifficulty = 12;
+        CameraScript.BonnieDifficulty = 10;
+        CameraScript.ChicaDifficulty = 12;
+        CameraScript.FreddyDifficulty = 4;
         CameraScript.FoxyDifficulty = 16;
     }
 

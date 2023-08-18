@@ -6,6 +6,7 @@ using UnityEngine.UI;
 public class OfficeScript : MonoBehaviour
 {
     public CameraScript CameraScript;
+    public SoundScript soundScript;
 
     public float panSpeed = 3f; // Speed of background panning
     public RawImage backgroundImage; // Reference to the RawImage component
@@ -195,6 +196,8 @@ public class OfficeScript : MonoBehaviour
             IsLeftDoorClosed = true;
             varD = 1;
             decVarD1 = 0.3f;
+
+            soundScript.ClosedDoor();
         }
     }
 
@@ -213,6 +216,8 @@ public class OfficeScript : MonoBehaviour
             IsRightDoorClosed = true;
             varE = 1;
             decVarE1 = 0.3f;
+
+            soundScript.ClosedDoor();
         }
     }
 

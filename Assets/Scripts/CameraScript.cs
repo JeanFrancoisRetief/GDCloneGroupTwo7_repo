@@ -119,8 +119,10 @@ public class CameraScript : MonoBehaviour
         EastHallCorner,
         OFFICE
     }
-    
 
+    [Header("Scripts")]
+    public SoundScript soundScript;
+    public OfficeScript officeScript;
 
     // Start is called before the first frame update
     void Start()
@@ -150,16 +152,62 @@ public class CameraScript : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        if(isGameActive)
+        if (isGameActive)
         {
             Freddy();
             Chica();
             Bonnie();
-            
+
             Foxy();
 
             LocationTracker();
         }
+
+        #region sounds
+
+        //plays when Chica is in the kitchen
+        if (ChicaLocation == Location.Kitchen)
+        {
+            soundScript.KitchenSounds();
+        }
+
+        //plays a different audio as Freddy gets closer
+        if (FreddyLocation == Location.DiningArea)
+        {
+            soundScript.FreddyLaugh1();
+        }
+
+        if (FreddyLocation == Location.Restrooms)
+        {
+            soundScript.FreddyLaugh2();
+        }
+
+        if (FreddyLocation == Location.Kitchen)
+        {
+            soundScript.FreddyLaugh3();
+        }
+
+        //plays if Bonnie or Chica is in the office while the camera is up
+        if (BonnieLocation == Location.OFFICE || ChicaLocation == Location.OFFICE && officeScript.AreCamsActive == true)
+        {
+            soundScript.AnimatronicInOffice();
+        }
+
+        //plays if Freddy is in the office
+        if (FreddyLocation == Location.OFFICE)
+        {
+            soundScript.FreddyInOffice();
+        }
+        
+        //plays an opening camera sound, a continous using camera sound and lowers the volume of the fan
+        if (officeScript.AreCamsActive == true)
+        {
+            soundScript.OpenCamera();
+            soundScript.FanSoundLower();
+            soundScript.UsingCams();
+        }
+
+        #endregion
     }
 
     //AI~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~

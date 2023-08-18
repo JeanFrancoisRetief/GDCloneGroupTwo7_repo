@@ -82,7 +82,7 @@ public class OfficeScript : MonoBehaviour
         {
             AreLeftLightsActive = true;
             varA = 1;
-            decVarA1 = 0.3f;
+            decVarA1 = 0.1f;
             
         }
         else
@@ -95,7 +95,7 @@ public class OfficeScript : MonoBehaviour
         {
             AreRightLightsActive = true;
             varB = 1;
-            decVarB1 = 0.3f;
+            decVarB1 = 0.1f;
         }
         else
         {
@@ -119,7 +119,7 @@ public class OfficeScript : MonoBehaviour
             camNav.SetActive(true);
             AreCamsActive = true;
             varC = 1;
-            decVarC1 = 0.3f;
+            decVarC1 = 0.1f;
 
             CameraScript.inCams = true;
         }
@@ -166,7 +166,7 @@ public class OfficeScript : MonoBehaviour
         {
             fiveBars.SetActive(false);
         }
-        decreaseSpeed = decVarA1 + decVarB1 + decVarC1 + decVarD1 + decVarE1 + 0.2f;
+        decreaseSpeed = decVarA1 + decVarB1 + decVarC1 + decVarD1 + decVarE1 + 0.1f;
 
         if(CameraScript.isGameActive == true)
         {
@@ -194,7 +194,7 @@ public class OfficeScript : MonoBehaviour
             LeftDoor.SetActive(true);
             IsLeftDoorClosed = true;
             varD = 1;
-            decVarD1 = 0.3f;
+            decVarD1 = 0.1f;
         }
     }
 
@@ -212,7 +212,7 @@ public class OfficeScript : MonoBehaviour
             RightDoor.SetActive(true);
             IsRightDoorClosed = true;
             varE = 1;
-            decVarE1 = 0.3f;
+            decVarE1 = 0.1f;
         }
     }
 

@@ -450,14 +450,7 @@ public class CameraScript : MonoBehaviour
                 Debug.Log("Foxy Moved!!!");
 
                 FoxyStage++;
-                if(FoxyStage == 4)
-                {
-                    FoxyLocation = Location.OFFICE;
-
-                    //if door closed --> FoxyStage = 1;
-
-
-                }
+                
             }
 
         }

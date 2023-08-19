@@ -11,12 +11,14 @@ public class EnemyAttackScript : MonoBehaviour
     public int BonnieAttackCounter;
     public int ChicaAttackCounter;
     public int FreddyAttackCounter;
+    public int FoxyRunCounter;
     // Start is called before the first frame update
     void Start()
     {
         BonnieAttackCounter = 15 * 60;
         ChicaAttackCounter = 15 * 60;
         FreddyAttackCounter = 20 * 60;
+        FoxyRunCounter = 2 * 60;
     }
 
     // Update is called once per frame
@@ -30,7 +32,7 @@ public class EnemyAttackScript : MonoBehaviour
                 PlayBonnieJumpScare();
                 
             }
-            else if ((OfficeScript.IsLeftDoorClosed))
+            else if ((BonnieAttackCounter <= 0) && (OfficeScript.IsLeftDoorClosed))
             {
                 CameraScript.BonnieLocation = CameraScript.Location.DiningArea;
                 BonnieAttackCounter = 15 * 60;
@@ -45,7 +47,7 @@ public class EnemyAttackScript : MonoBehaviour
                 PlayChicaJumpScare();
 
             }
-            else if ((OfficeScript.IsRightDoorClosed))
+            else if ((ChicaAttackCounter <= 0) && (OfficeScript.IsRightDoorClosed))
             {
                 CameraScript.ChicaLocation = CameraScript.Location.DiningArea;
                 ChicaAttackCounter = 15 * 60;
@@ -60,27 +62,32 @@ public class EnemyAttackScript : MonoBehaviour
                 PlayFreddyJumpScare();
 
             }
-            else if ((OfficeScript.IsRightDoorClosed))
+            else if ((FreddyAttackCounter <= 0) && (OfficeScript.IsRightDoorClosed))
             {
                 CameraScript.FreddyLocation = CameraScript.Location.MainStage;
                 FreddyAttackCounter = 20 * 60;
             }
         }
 
-        if ((CameraScript.FoxyLocation == CameraScript.Location.EastHallCorner))
+        if ((CameraScript.FoxyStage >= 4))
         {
-            FreddyAttackCounter--;
-            if ((FreddyAttackCounter <= 0) && !(OfficeScript.IsRightDoorClosed))
+            //Play Foxy RUNING NOISE------------------
+
+            //----------------------------------------
+            FoxyRunCounter--;
+            if ((FoxyRunCounter <= 0) && !(OfficeScript.IsLeftDoorClosed))
             {
                 PlayFoxyJumpScare();
 
             }
-            else if ((OfficeScript.IsRightDoorClosed))
+            else if ((FoxyRunCounter <= 0) && (OfficeScript.IsLeftDoorClosed))
             {
-                CameraScript.FreddyLocation = CameraScript.Location.MainStage;
-                FreddyAttackCounter = 20 * 60;
+                CameraScript.FoxyStage = 2;
+                FoxyRunCounter = 2 * 60;
             }
         }
+
+        
     }
 
     public void PlayBonnieJumpScare()

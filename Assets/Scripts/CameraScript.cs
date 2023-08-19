@@ -169,6 +169,12 @@ public class CameraScript : MonoBehaviour
         if (ChicaLocation == Location.Kitchen)
         {
             soundScript.KitchenSounds();
+
+            //plays louder when cams are active
+            if (officeScript.AreCamsActive == true)
+            {
+                soundScript.kitchenSounds.volume = 1;
+            }
         }
 
         //plays a different audio as Freddy gets closer

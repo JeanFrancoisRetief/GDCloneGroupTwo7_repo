@@ -124,6 +124,7 @@ public class CameraScript : MonoBehaviour
     [Header("Scripts")]
     public SoundScript soundScript;
     public OfficeScript officeScript;
+    public MainMenuScript mainMenuScript;
 
     // Start is called before the first frame update
     void Start()
@@ -197,9 +198,12 @@ public class CameraScript : MonoBehaviour
         }
 
         //plays if Bonnie or Chica is in the office while the camera is up
-        if (BonnieLocation == Location.OFFICE || ChicaLocation == Location.OFFICE && officeScript.AreCamsActive == true)
+        if (BonnieLocation == Location.OFFICE || ChicaLocation == Location.OFFICE)
         {
-            soundScript.AnimatronicInOffice();
+            if (officeScript.AreCamsActive == true)
+            {
+                soundScript.AnimatronicInOffice();
+            }
         }
 
         //plays if Freddy is in the office
@@ -216,10 +220,16 @@ public class CameraScript : MonoBehaviour
             //soundScript.UsingCams(); //change to on button click
         }
 
-        //plays if an animatronic is the corner and player puts the light on
-        if (BonnieLocation == Location.WestHallCorner || BonnieLocation == Location.EastHallCorner || ChicaLocation == Location.WestHallCorner || ChicaLocation == Location.EastHallCorner && officeScript.AreLeftLightsActive == true)
+        //plays if an animatronic is the corner and player puts the light on during or after night 3
+        if (mainMenuScript.nightCounter >= 3)
         {
-            soundScript.AnimatronicAtCorner();
+            if (BonnieLocation == Location.WestHallCorner || BonnieLocation == Location.EastHallCorner || ChicaLocation == Location.WestHallCorner || ChicaLocation == Location.EastHallCorner)
+            {
+                if (officeScript.AreLeftLightsActive == true || officeScript.AreRightLightsActive == true)
+                {
+                    soundScript.AnimatronicAtCorner();
+                }
+            }
         }
 
         #endregion

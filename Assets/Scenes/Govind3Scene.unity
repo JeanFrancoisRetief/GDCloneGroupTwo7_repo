@@ -1803,7 +1803,7 @@ AudioSource:
   m_Enabled: 1
   serializedVersion: 4
   OutputAudioMixerGroup: {fileID: 0}
-  m_audioClip: {fileID: 8300000, guid: 2252a65e5ab222f4bbed2fd8a15d8ff6, type: 3}
+  m_audioClip: {fileID: 8300000, guid: 631613f322018814c819e5fac03d0c69, type: 3}
   m_PlayOnAwake: 0
   m_Volume: 1
   m_Pitch: 1
@@ -10819,6 +10819,7 @@ MonoBehaviour:
   FoxyStage: 0
   soundScript: {fileID: 1660950348}
   officeScript: {fileID: 1660950346}
+  mainMenuScript: {fileID: 0}
 --- !u!114 &1660950346
 MonoBehaviour:
   m_ObjectHideFlags: 0

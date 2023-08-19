@@ -35,6 +35,7 @@ public class SoundScript : MonoBehaviour
 
     public AudioSource animatronicAtCorner;
 
+
     #region advantageous sounds
 
     public void KitchenSounds()

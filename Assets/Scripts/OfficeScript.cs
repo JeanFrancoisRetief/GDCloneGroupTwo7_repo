@@ -23,6 +23,9 @@ public class OfficeScript : MonoBehaviour
     public GameObject LeftDoor;
     public GameObject RightDoor;
 
+    public GameObject bonnieInDoor;
+    public GameObject chicaInWindow;
+
     public bool IsLeftDoorClosed;
     public bool IsRightDoorClosed;
 
@@ -176,7 +179,22 @@ public class OfficeScript : MonoBehaviour
             UpdatePowerText(); // Call the method to update the UI text
         }
         
-
+        if(CameraScript.BonnieLocation == CameraScript.Location.OFFICE)
+        {
+            bonnieInDoor.SetActive(true);
+        }
+        else
+        {
+            bonnieInDoor.SetActive(false);
+        }
+        if(CameraScript.ChicaLocation == CameraScript.Location.OFFICE)
+        {
+            chicaInWindow.SetActive(true);
+        }
+        else
+        {
+            chicaInWindow.SetActive(false);
+        }
 
     }
 

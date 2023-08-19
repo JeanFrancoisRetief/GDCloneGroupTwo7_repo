@@ -21,6 +21,7 @@ public class SoundScript : MonoBehaviour
     public AudioSource fanSoundLower;
 
     public AudioSource closedDoor;
+    public AudioSource usingLights;
 
     public int randomCounter;
     public int organCounter;
@@ -31,6 +32,8 @@ public class SoundScript : MonoBehaviour
     public AudioSource foxySinging;
     public AudioSource swirlingNoise;
     public AudioSource subtleNoises;
+
+    public AudioSource animatronicAtCorner;
 
     #region advantageous sounds
 
@@ -80,12 +83,17 @@ public class SoundScript : MonoBehaviour
 
     public void FanSoundLower()
     {
-        fanSoundLower.volume = 0.5f;
+        fanSoundLower.volume = 0.1f;
     }
 
     public void ClosedDoor()
     {
         closedDoor.Play();
+    }
+
+    public void UsingLights()
+    {
+        usingLights.Play();
     }
 
     public void OrganSong()
@@ -118,6 +126,11 @@ public class SoundScript : MonoBehaviour
         {
             subtleNoises.Play();
         }
+    }
+
+    public void AnimatronicAtCorner()
+    {
+        animatronicAtCorner.Play();
     }
 
     #endregion

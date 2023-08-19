@@ -9187,6 +9187,7 @@ GameObject:
   - component: {fileID: 1660950346}
   - component: {fileID: 1660950347}
   - component: {fileID: 1660950348}
+  - component: {fileID: 1660950349}
   m_Layer: 0
   m_Name: ScriptHolder
   m_TagString: Untagged
@@ -9287,6 +9288,8 @@ MonoBehaviour:
   FreddyLocation: 0
   FoxyLocation: 0
   FoxyStage: 0
+  soundScript: {fileID: 0}
+  officeScript: {fileID: 0}
 --- !u!114 &1660950346
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -9299,6 +9302,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 3e0a21c650c06344f84eb0b76979075f, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  CameraScript: {fileID: 0}
+  soundScript: {fileID: 0}
   panSpeed: 3
   backgroundImage: {fileID: 1656568094}
   LeftLightsContainer: {fileID: 165690875}
@@ -9311,6 +9316,15 @@ MonoBehaviour:
   IsRightDoorClosed: 0
   camNav: {fileID: 476738788}
   AreCamsActive: 0
+  totalActiveBars: 0
+  oneBar: {fileID: 0}
+  twoBars: {fileID: 0}
+  threeBars: {fileID: 0}
+  fourBars: {fileID: 0}
+  fiveBars: {fileID: 0}
+  powerLeft: 100
+  decreaseSpeed: 0
+  powerText: {fileID: 0}
 --- !u!114 &1660950347
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -9359,6 +9373,37 @@ MonoBehaviour:
   freddyImg3: {fileID: 269225250}
   freddyImg4: {fileID: 1111092248}
   freddyImg5: {fileID: 1186401831}
+--- !u!114 &1660950349
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1660950342}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 6253949b8d6bea7408bec783bc4e6db3, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  kitchenSounds: {fileID: 0}
+  freddyLaugh1: {fileID: 0}
+  freddyLaugh2: {fileID: 0}
+  freddyLaugh3: {fileID: 0}
+  animatronicInOffice: {fileID: 0}
+  freddyInOffice: {fileID: 0}
+  openCamera: {fileID: 0}
+  usingCams: {fileID: 0}
+  fanSoundLower: {fileID: 0}
+  closedDoor: {fileID: 0}
+  randomCounter: 0
+  organCounter: 0
+  foxySingingCounter: 0
+  swirlingNoiseCounter: 0
+  subtleNoisesCounter: 0
+  organSong: {fileID: 0}
+  foxySinging: {fileID: 0}
+  swirlingNoise: {fileID: 0}
+  subtleNoises: {fileID: 0}
 --- !u!1 &1662219404
 GameObject:
   m_ObjectHideFlags: 0

@@ -84,7 +84,8 @@ public class OfficeScript : MonoBehaviour
             AreLeftLightsActive = true;
             varA = 1;
             decVarA1 = 0.3f;
-            
+
+            soundScript.UsingLights();
         }
         else
         {
@@ -97,6 +98,8 @@ public class OfficeScript : MonoBehaviour
             AreRightLightsActive = true;
             varB = 1;
             decVarB1 = 0.3f;
+
+            soundScript.UsingLights();
         }
         else
         {

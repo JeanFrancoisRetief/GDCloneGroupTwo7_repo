@@ -1,6 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.Rendering;
 using UnityEngine.UI;
 
 public class CameraScript : MonoBehaviour
@@ -161,6 +162,8 @@ public class CameraScript : MonoBehaviour
             Foxy();
 
             LocationTracker();
+
+            soundScript.fanSoundLower.volume = 0.25f;
         }
 
         #region sounds
@@ -173,7 +176,7 @@ public class CameraScript : MonoBehaviour
             //plays louder when cams are active
             if (officeScript.AreCamsActive == true)
             {
-                soundScript.kitchenSounds.volume = 1;
+                soundScript.kitchenSounds.volume = 0.25f;
             }
         }
 
@@ -208,9 +211,15 @@ public class CameraScript : MonoBehaviour
         //plays an opening camera sound, a continous using camera sound and lowers the volume of the fan
         if (officeScript.AreCamsActive == true)
         {
-            soundScript.OpenCamera();
+            //soundScript.OpenCamera();  //change to on button click
             soundScript.FanSoundLower();
-            soundScript.UsingCams();
+            //soundScript.UsingCams(); //change to on button click
+        }
+
+        //plays if an animatronic is the corner and player puts the light on
+        if (BonnieLocation == Location.WestHallCorner || BonnieLocation == Location.EastHallCorner || ChicaLocation == Location.WestHallCorner || ChicaLocation == Location.EastHallCorner && officeScript.AreLeftLightsActive == true)
+        {
+            soundScript.AnimatronicAtCorner();
         }
 
         #endregion

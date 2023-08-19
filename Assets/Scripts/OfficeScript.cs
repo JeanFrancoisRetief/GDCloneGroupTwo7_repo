@@ -6,6 +6,7 @@ using UnityEngine.UI;
 public class OfficeScript : MonoBehaviour
 {
     public CameraScript CameraScript;
+    public SoundScript soundScript;
 
     public float panSpeed = 3f; // Speed of background panning
     public RawImage backgroundImage; // Reference to the RawImage component
@@ -86,7 +87,8 @@ public class OfficeScript : MonoBehaviour
             AreLeftLightsActive = true;
             varA = 1;
             decVarA1 = 0.1f;
-            
+
+            soundScript.UsingLights();
         }
         else
         {
@@ -99,6 +101,8 @@ public class OfficeScript : MonoBehaviour
             AreRightLightsActive = true;
             varB = 1;
             decVarB1 = 0.1f;
+
+            soundScript.UsingLights();
         }
         else
         {
@@ -125,6 +129,9 @@ public class OfficeScript : MonoBehaviour
             decVarC1 = 0.1f;
 
             CameraScript.inCams = true;
+
+            soundScript.OpenCamera();
+            soundScript.UsingCams();
         }
 
         totalActiveBars = varA + varB + varC + varD + varE + 1;
@@ -213,6 +220,8 @@ public class OfficeScript : MonoBehaviour
             IsLeftDoorClosed = true;
             varD = 1;
             decVarD1 = 0.1f;
+
+            soundScript.ClosedDoor();
         }
     }
 
@@ -231,6 +240,8 @@ public class OfficeScript : MonoBehaviour
             IsRightDoorClosed = true;
             varE = 1;
             decVarE1 = 0.1f;
+
+            soundScript.ClosedDoor();
         }
     }
 

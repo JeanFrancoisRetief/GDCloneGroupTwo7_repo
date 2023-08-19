@@ -84,6 +84,10 @@ public class CameraScript : MonoBehaviour
     public int freddyCounter; //every 3.02 sec = 181,2 frames
     public int foxyCounter; //every 5.01 sec = 300,6 frames
 
+    [Header("MovementBools")]
+    public bool BonnieMoving;
+    public bool ChicaMoving;
+    public bool FreddyMoving;
 
     /*
      Note:
@@ -196,6 +200,15 @@ public class CameraScript : MonoBehaviour
             soundScript.FreddyLaugh3();
         }
 
+        //plays if camera is active and an animatronic moves
+        if (officeScript.AreCamsActive == true)
+        {
+            if (BonnieMoving == true || ChicaMoving == true || FreddyMoving == true)
+            {
+                soundScript.AnimatronicMoving();
+            }
+        }
+        
         //plays if Bonnie or Chica is in the office while the camera is up
         if (BonnieLocation == Location.OFFICE || ChicaLocation == Location.OFFICE)
         {
@@ -214,9 +227,7 @@ public class CameraScript : MonoBehaviour
         //plays an opening camera sound, a continous using camera sound and lowers the volume of the fan
         if (officeScript.AreCamsActive == true)
         {
-            //soundScript.OpenCamera();  //change to on button click
             soundScript.FanSoundLower();
-            //soundScript.UsingCams(); //change to on button click
         }
 
         //plays if an animatronic is the corner and player puts the light on during or after night 3
@@ -421,8 +432,14 @@ public class CameraScript : MonoBehaviour
                     Debug.Log("Bonnie in OFFICE");
                 }
 
-            }
+                BonnieMoving = true; //bool becomes true on a successful skill check
 
+            }
+        }
+
+        if (bonnieCounter >= 150) //might need some adjusting
+        {
+            BonnieMoving = false; //bool becomes false after some time has passed to allow for a safe range for sound to play
         }
     }
     private void Chica()
@@ -465,9 +482,16 @@ public class CameraScript : MonoBehaviour
                 {
                     ChicaLocation = Location.OFFICE; //danger zone
                 }
+                
+                ChicaMoving = true;
       
             }
 
+        }
+
+        if (chicaCounter >= 150) //might need some adjusting
+        {
+            ChicaMoving = false; //bool becomes false after some time has passed to allow for a safe range for sound to play
         }
     }
     private void Freddy()
@@ -498,6 +522,13 @@ public class CameraScript : MonoBehaviour
                 
             }
 
+            FreddyMoving = true;
+
+        }
+
+        if (freddyCounter >= 150) //might need some adjusting
+        {
+            FreddyMoving = false; //bool becomes false after some time has passed to allow for a safe range for sound to play
         }
     }
     private void Foxy()

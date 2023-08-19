@@ -12,8 +12,13 @@ public class SoundScript : MonoBehaviour
     public AudioSource freddyLaugh2;
     public AudioSource freddyLaugh3;
 
+    public AudioSource animatronicMoving;
+
     public AudioSource animatronicInOffice;
     public AudioSource freddyInOffice;
+
+    public AudioSource foxyRunning;
+    public AudioSource doorBanging;
 
     [Header("Environmental Sounds")]
     public AudioSource openCamera;
@@ -57,6 +62,11 @@ public class SoundScript : MonoBehaviour
         freddyLaugh3.Play();
     }
 
+    public void AnimatronicMoving()
+    {
+        animatronicMoving.Play();
+    }
+
     public void AnimatronicInOffice()
     {
         animatronicInOffice.Play();
@@ -65,6 +75,16 @@ public class SoundScript : MonoBehaviour
     public void FreddyInOffice()
     {
         freddyInOffice.Play();
+    }
+
+    public void FoxyRunnning()
+    {
+        foxyRunning.Play();   
+    }
+
+    public void DoorBanging()
+    {
+        doorBanging.Play();
     }
 
     #endregion

@@ -7,6 +7,7 @@ public class EnemyAttackScript : MonoBehaviour
 {
     public OfficeScript OfficeScript;
     public CameraScript CameraScript;
+    public SoundScript SoundScript;
 
     public int BonnieAttackCounter;
     public int ChicaAttackCounter;
@@ -72,6 +73,7 @@ public class EnemyAttackScript : MonoBehaviour
         if ((CameraScript.FoxyStage >= 4))
         {
             //Play Foxy RUNING NOISE------------------
+            SoundScript.FoxyRunnning();
 
             //----------------------------------------
             FoxyRunCounter--;
@@ -84,6 +86,7 @@ public class EnemyAttackScript : MonoBehaviour
             {
                 CameraScript.FoxyStage = 2;
                 FoxyRunCounter = 2 * 60;
+                SoundScript.DoorBanging();
             }
         }
 

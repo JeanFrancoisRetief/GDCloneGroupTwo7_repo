@@ -5,6 +5,10 @@ using UnityEngine;
 
 public class SoundScript : MonoBehaviour
 {
+    [Header("Main Menu")]
+    public AudioSource mainMenuSound;
+    public AudioSource mainMenuSound1;
+
     [Header("Advantageous Sounds")]
     public AudioSource kitchenSounds;
 
@@ -13,9 +17,6 @@ public class SoundScript : MonoBehaviour
     public AudioSource freddyLaugh3;
 
     public AudioSource animatronicMoving;
-
-    public AudioSource animatronicInOffice;
-    public AudioSource freddyInOffice;
 
     public AudioSource foxyRunning;
     public AudioSource doorBanging;
@@ -38,6 +39,7 @@ public class SoundScript : MonoBehaviour
     public AudioSource swirlingNoise;
     public AudioSource subtleNoises;
 
+    public AudioSource animatronicInDoorWay;
     public AudioSource animatronicAtCorner;
 
     #region advantageous sounds
@@ -65,16 +67,6 @@ public class SoundScript : MonoBehaviour
     public void AnimatronicMoving()
     {
         animatronicMoving.Play();
-    }
-
-    public void AnimatronicInOffice()
-    {
-        animatronicInOffice.Play();
-    }
-
-    public void FreddyInOffice()
-    {
-        freddyInOffice.Play();
     }
 
     public void FoxyRunnning()
@@ -151,6 +143,11 @@ public class SoundScript : MonoBehaviour
     public void AnimatronicAtCorner()
     {
         animatronicAtCorner.Play();
+    }
+
+    public void AnimatronicInDoorway()
+    {
+        animatronicInDoorWay.Play();
     }
 
     #endregion

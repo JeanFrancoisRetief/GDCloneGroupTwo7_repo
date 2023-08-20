@@ -172,6 +172,13 @@ public class CameraScript : MonoBehaviour
 
         #region sounds
 
+        //stops main menu sounds when a night starts
+        if (isGameActive == true)
+        {
+            soundScript.mainMenuSound.Stop();
+            soundScript.mainMenuSound1.Stop();
+        }
+
         //plays when Chica is in the kitchen
         if (ChicaLocation == Location.Kitchen)
         {
@@ -208,21 +215,6 @@ public class CameraScript : MonoBehaviour
                 soundScript.AnimatronicMoving();
             }
         }
-        
-        //plays if Bonnie or Chica is in the office while the camera is up
-        if (BonnieLocation == Location.OFFICE || ChicaLocation == Location.OFFICE)
-        {
-            if (officeScript.AreCamsActive == true)
-            {
-                soundScript.AnimatronicInOffice();
-            }
-        }
-
-        //plays if Freddy is in the office
-        if (FreddyLocation == Location.OFFICE)
-        {
-            soundScript.FreddyInOffice();
-        }
 
         //plays an opening camera sound, a continous using camera sound and lowers the volume of the fan
         if (officeScript.AreCamsActive == true)
@@ -235,10 +227,28 @@ public class CameraScript : MonoBehaviour
         {
             if (BonnieLocation == Location.WestHallCorner || BonnieLocation == Location.EastHallCorner || ChicaLocation == Location.WestHallCorner || ChicaLocation == Location.EastHallCorner)
             {
-                if (officeScript.AreLeftLightsActive == true || officeScript.AreRightLightsActive == true)
+                if (officeScript.AreCamsActive == true)
                 {
                     soundScript.AnimatronicAtCorner();
                 }
+            }
+        }
+
+        //plays if Bonnie is in the doorway and the left lights are switched on
+        if (officeScript.AreLeftLightsActive)
+        {
+            if (BonnieLocation == Location.OFFICE)
+            {
+                soundScript.AnimatronicInDoorway();
+            }
+        }
+
+        //plays if Chica is in the window and the right lights are switched on
+        if (officeScript.AreRightLightsActive) 
+        { 
+            if (ChicaLocation == Location.OFFICE)
+            {
+                soundScript.AnimatronicInDoorway();
             }
         }
 

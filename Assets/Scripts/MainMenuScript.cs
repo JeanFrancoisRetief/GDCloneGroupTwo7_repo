@@ -16,6 +16,7 @@ public class MainMenuScript : MonoBehaviour
 
     [Header("Night")]
     public int nightCounter;
+    public Text nightText;
 
     [Header("Difficulty")]
     public Text BonnieDifficultyTxt;
@@ -184,6 +185,12 @@ public class MainMenuScript : MonoBehaviour
         FreddyDifficultyTxt.text = CameraScript.FreddyDifficulty.ToString();
         FoxyDifficultyTxt.text = CameraScript.FoxyDifficulty.ToString();
 
+        nightText.text = "Night " + nightCounter;
+        if (nightCounter == 7)
+        {
+            nightText.text = "Custom Night";
+        }
+
         #region freddy image
 
         freddyImageCounter++;
@@ -256,6 +263,11 @@ public class MainMenuScript : MonoBehaviour
         CameraScript.ChicaDifficulty = 12;
         CameraScript.FreddyDifficulty = 4;
         CameraScript.FoxyDifficulty = 16;
+    }
+
+    public void Night7()
+    {
+        nightCounter = 7;
     }
 
     #endregion

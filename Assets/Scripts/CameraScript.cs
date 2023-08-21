@@ -252,6 +252,15 @@ public class CameraScript : MonoBehaviour
             }
         }
 
+        //plays if there is 0 power and freddy is in the office
+        if (officeScript.powerLeft == 0)
+        {
+            if (FreddyLocation == Location.OFFICE)
+            {
+                soundScript.FreddyAtDoor();
+            }
+        }
+
         #endregion
     }
 

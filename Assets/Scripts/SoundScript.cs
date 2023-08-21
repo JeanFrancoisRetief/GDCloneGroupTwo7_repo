@@ -42,6 +42,11 @@ public class SoundScript : MonoBehaviour
     public AudioSource animatronicInDoorWay;
     public AudioSource animatronicAtCorner;
 
+    [Header("Lights Out Sounds")]
+    public AudioSource powerDown;
+    public AudioSource freddyAtDoor;
+    public AudioSource lightsClick;
+
     #region advantageous sounds
 
     public void KitchenSounds()
@@ -151,6 +156,21 @@ public class SoundScript : MonoBehaviour
     }
 
     #endregion
+
+    public void PowerDown()
+    {
+        powerDown.Play();
+    }
+
+    public void FreddyAtDoor()
+    {
+        freddyAtDoor.Play();
+    }
+
+    public void LightsClick()
+    {
+        lightsClick.Play();
+    }
 
     private void Update()
     {

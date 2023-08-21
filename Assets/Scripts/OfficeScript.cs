@@ -88,7 +88,14 @@ public class OfficeScript : MonoBehaviour
             varA = 1;
             decVarA1 = 0.1f;
 
-            soundScript.UsingLights();
+            if (powerLeft <= 0)
+            {
+                soundScript.LightsClick();
+            }
+            else
+            {
+                soundScript.UsingLights();
+            }
         }
         else
         {
@@ -102,7 +109,14 @@ public class OfficeScript : MonoBehaviour
             varB = 1;
             decVarB1 = 0.1f;
 
-            soundScript.UsingLights();
+            if (powerLeft <= 0)
+            {
+                soundScript.LightsClick();
+            }
+            else
+            {
+                soundScript.UsingLights();
+            }
         }
         else
         {
@@ -201,6 +215,11 @@ public class OfficeScript : MonoBehaviour
         else
         {
             chicaInWindow.SetActive(false);
+        }
+
+        if (powerLeft <= 0f)
+        {
+            soundScript.PowerDown();
         }
 
     }

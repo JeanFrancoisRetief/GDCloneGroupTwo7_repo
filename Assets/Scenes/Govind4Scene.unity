@@ -519,7 +519,7 @@ Transform:
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 0}
-  m_RootOrder: 4
+  m_RootOrder: 5
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &57530978
 GameObject:
@@ -11821,7 +11821,8 @@ MonoBehaviour:
   usingCams: {fileID: 203129966}
   fanSoundLower: {fileID: 73557218}
   closedDoor: {fileID: 57530980}
-  usingLights: {fileID: 1211870893}
+  usingRightLights: {fileID: 1211870893}
+  usingLeftLights: {fileID: 1952213679}
   randomCounter: 0
   environmentalNoisesCounter: 0
   organSong: {fileID: 10070429}
@@ -12426,7 +12427,7 @@ Transform:
   - {fileID: 842669615}
   - {fileID: 2052007014}
   m_Father: {fileID: 0}
-  m_RootOrder: 5
+  m_RootOrder: 3
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &1753992028
 GameObject:
@@ -13423,7 +13424,7 @@ RectTransform:
   - {fileID: 1201152424}
   - {fileID: 1361351845}
   m_Father: {fileID: 0}
-  m_RootOrder: 3
+  m_RootOrder: 4
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 0}
   m_AnchorMax: {x: 0, y: 0}
@@ -14109,7 +14110,7 @@ GameObject:
   - component: {fileID: 1952213678}
   - component: {fileID: 1952213679}
   m_Layer: 0
-  m_Name: UsingRightLights (1)
+  m_Name: UsingLeftLights
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0

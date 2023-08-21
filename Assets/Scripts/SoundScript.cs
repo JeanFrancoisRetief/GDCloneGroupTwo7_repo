@@ -27,13 +27,11 @@ public class SoundScript : MonoBehaviour
     public AudioSource fanSoundLower;
 
     public AudioSource closedDoor;
-    public AudioSource usingLights;
+    public AudioSource usingRightLights;
+    public AudioSource usingLeftLights;
 
     public int randomCounter;
-    public int organCounter;
-    public int foxySingingCounter;
-    public int swirlingNoiseCounter;
-    public int subtleNoisesCounter;
+    public int environmentalNoisesCounter;
     public AudioSource organSong;
     public AudioSource foxySinging;
     public AudioSource swirlingNoise;
@@ -107,41 +105,14 @@ public class SoundScript : MonoBehaviour
         closedDoor.Play();
     }
 
-    public void UsingLights()
+    public void UsingRightLights()
     {
-        usingLights.Play();
+        usingRightLights.Play();
     }
 
-    public void OrganSong()
+    public void UsingLeftLights()
     {
-        if (organCounter == 1)
-        {
-            organSong.Play();
-        }
-    }
-
-    public void FoxySingning()
-    {
-        if (randomCounter == foxySingingCounter)
-        {
-            foxySinging.Play();
-        }
-    }
-
-    public void SwirlingNoise()
-    {
-        if (randomCounter == swirlingNoiseCounter)
-        {
-            swirlingNoise.Play();
-        }
-    }
-
-    public void SubtleNoises()
-    {
-        if (randomCounter == subtleNoisesCounter)
-        {
-            subtleNoises.Play();
-        }
+        usingLeftLights.Play();
     }
 
     public void AnimatronicAtCorner()
@@ -156,6 +127,8 @@ public class SoundScript : MonoBehaviour
 
     #endregion
 
+    #region lights out
+
     public void PowerDown()
     {
         powerDown.Play();
@@ -166,12 +139,40 @@ public class SoundScript : MonoBehaviour
         freddyAtDoor.Play();
     }
 
+    #endregion
+
     private void Update()
     {
-        //randomCounter = UnityEngine.Random.Range(0, 780);
-        organCounter = UnityEngine.Random.Range(0, 20);
-        //foxySingingCounter = UnityEngine.Random.Range(0, 780);
-        //swirlingNoiseCounter = UnityEngine.Random.Range(0, 780);
-        //subtleNoisesCounter = UnityEngine.Random.Range(0, 780);
+        environmentalNoisesCounter++;
+        if (environmentalNoisesCounter == 60)
+        {
+            CheckRandomCounter();
+            environmentalNoisesCounter = 0;
+        }
+    }
+
+    public void CheckRandomCounter()
+    {
+        randomCounter = UnityEngine.Random.Range(0, 60);
+
+        if (randomCounter == 15)
+        {
+            organSong.Play();
+        }
+
+        if (randomCounter == 30)
+        {
+            foxyRunning.Play();
+        }
+
+        if (randomCounter == 45)
+        {
+            swirlingNoise.Play();
+        }
+
+        if (randomCounter == 60)
+        {
+            subtleNoises.Play();
+        }
     }
 }

@@ -89,6 +89,11 @@ public class CameraScript : MonoBehaviour
     public bool ChicaMoving;
     public bool FreddyMoving;
 
+    [Header("Scripts")]
+    public SoundScript soundScript;
+    public OfficeScript officeScript;
+    public MainMenuScript mainMenuScript;
+
     /*
      Note:
         From ExitScript
@@ -124,10 +129,7 @@ public class CameraScript : MonoBehaviour
         OFFICE
     }
 
-    [Header("Scripts")]
-    public SoundScript soundScript;
-    public OfficeScript officeScript;
-    public MainMenuScript mainMenuScript;
+
 
     // Start is called before the first frame update
     void Start()

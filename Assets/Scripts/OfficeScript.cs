@@ -88,8 +88,10 @@ public class OfficeScript : MonoBehaviour
             varA = 1;
             decVarA1 = 0.1f;
 
+            if (AreLeftLightsActive == true)
             {
-                soundScript.UsingLights();
+                Debug.Log("ll");
+                soundScript.UsingLeftLights();
             }
         }
         else
@@ -98,7 +100,7 @@ public class OfficeScript : MonoBehaviour
             varA = 0;
             decVarA1 = 0f;
 
-            soundScript.usingLights.Stop();
+            soundScript.usingLeftLights.Stop();
         }
         if (RightLightsContainer.activeSelf)
         {
@@ -106,9 +108,7 @@ public class OfficeScript : MonoBehaviour
             varB = 1;
             decVarB1 = 0.1f;
 
-            {
-                soundScript.UsingLights();
-            }
+            soundScript.UsingRightLights();
         }
         else
         {
@@ -116,7 +116,7 @@ public class OfficeScript : MonoBehaviour
             varB = 0;
             decVarB1 = 0f;
 
-            soundScript.usingLights.Stop();
+            soundScript.usingRightLights.Stop();
         }
 
         //sets the camera navigation to active is space bar is clicked, if already active and spacebar is clicked then deactivates camNav

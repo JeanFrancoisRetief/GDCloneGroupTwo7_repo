@@ -50,6 +50,8 @@ public class OfficeScript : MonoBehaviour
 
     public float powerLeft = 100f;
     public float decreaseSpeed;
+
+    public Animation fanSpinning;
    
     
 

@@ -37,6 +37,7 @@ public class EnemyAttackScript : MonoBehaviour
             {
                 CameraScript.BonnieLocation = CameraScript.Location.DiningArea;
                 BonnieAttackCounter = 15 * 60;
+                SoundScript.DoorBanging();
             }
         }
 
@@ -52,6 +53,7 @@ public class EnemyAttackScript : MonoBehaviour
             {
                 CameraScript.ChicaLocation = CameraScript.Location.DiningArea;
                 ChicaAttackCounter = 15 * 60;
+                SoundScript.DoorBanging();
             }
         }
 
@@ -67,6 +69,7 @@ public class EnemyAttackScript : MonoBehaviour
             {
                 CameraScript.FreddyLocation = CameraScript.Location.MainStage;
                 FreddyAttackCounter = 20 * 60;
+                SoundScript.DoorBanging();
             }
         }
 

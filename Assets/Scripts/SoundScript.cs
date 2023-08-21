@@ -45,7 +45,6 @@ public class SoundScript : MonoBehaviour
     [Header("Lights Out Sounds")]
     public AudioSource powerDown;
     public AudioSource freddyAtDoor;
-    public AudioSource lightsClick;
 
     #region advantageous sounds
 
@@ -100,7 +99,7 @@ public class SoundScript : MonoBehaviour
 
     public void FanSoundLower()
     {
-        fanSoundLower.volume = 0.1f;
+        fanSoundLower.volume = 0.25f;
     }
 
     public void ClosedDoor()
@@ -115,7 +114,7 @@ public class SoundScript : MonoBehaviour
 
     public void OrganSong()
     {
-        if (randomCounter == organCounter)
+        if (organCounter == 1)
         {
             organSong.Play();
         }
@@ -167,17 +166,12 @@ public class SoundScript : MonoBehaviour
         freddyAtDoor.Play();
     }
 
-    public void LightsClick()
-    {
-        lightsClick.Play();
-    }
-
     private void Update()
     {
-        randomCounter = UnityEngine.Random.Range(0, 780);
-        organCounter = UnityEngine.Random.Range(0, 780);
-        foxySingingCounter = UnityEngine.Random.Range(0, 780);
-        swirlingNoiseCounter = UnityEngine.Random.Range(0, 780);
-        subtleNoisesCounter = UnityEngine.Random.Range(0, 780);
+        //randomCounter = UnityEngine.Random.Range(0, 780);
+        organCounter = UnityEngine.Random.Range(0, 20);
+        //foxySingingCounter = UnityEngine.Random.Range(0, 780);
+        //swirlingNoiseCounter = UnityEngine.Random.Range(0, 780);
+        //subtleNoisesCounter = UnityEngine.Random.Range(0, 780);
     }
 }

@@ -88,11 +88,6 @@ public class OfficeScript : MonoBehaviour
             varA = 1;
             decVarA1 = 0.1f;
 
-            if (powerLeft <= 0)
-            {
-                soundScript.LightsClick();
-            }
-            else
             {
                 soundScript.UsingLights();
             }
@@ -102,6 +97,8 @@ public class OfficeScript : MonoBehaviour
             AreLeftLightsActive = false;
             varA = 0;
             decVarA1 = 0f;
+
+            soundScript.usingLights.Stop();
         }
         if (RightLightsContainer.activeSelf)
         {
@@ -109,11 +106,6 @@ public class OfficeScript : MonoBehaviour
             varB = 1;
             decVarB1 = 0.1f;
 
-            if (powerLeft <= 0)
-            {
-                soundScript.LightsClick();
-            }
-            else
             {
                 soundScript.UsingLights();
             }
@@ -123,6 +115,8 @@ public class OfficeScript : MonoBehaviour
             AreRightLightsActive = false;
             varB = 0;
             decVarB1 = 0f;
+
+            soundScript.usingLights.Stop();
         }
 
         //sets the camera navigation to active is space bar is clicked, if already active and spacebar is clicked then deactivates camNav
@@ -134,6 +128,7 @@ public class OfficeScript : MonoBehaviour
             decVarC1 = 0f;
 
             CameraScript.inCams = false;
+            soundScript.usingCams.Stop();
         }
         else if(Input.GetKeyDown(KeyCode.Space))
         {
@@ -216,12 +211,6 @@ public class OfficeScript : MonoBehaviour
         {
             chicaInWindow.SetActive(false);
         }
-
-        if (powerLeft <= 0f)
-        {
-            soundScript.PowerDown();
-        }
-
     }
 
     public void OnLeftDoorButtonClick()
@@ -232,6 +221,8 @@ public class OfficeScript : MonoBehaviour
             IsLeftDoorClosed = false;
             varD = 0;
             decVarD1 = 0f;
+
+            soundScript.ClosedDoor();
         }
         else
         {
@@ -252,6 +243,8 @@ public class OfficeScript : MonoBehaviour
             IsRightDoorClosed = false;
             varE = 0;
             decVarE1 = 0f;
+
+            soundScript.ClosedDoor();
         }
         else
         {

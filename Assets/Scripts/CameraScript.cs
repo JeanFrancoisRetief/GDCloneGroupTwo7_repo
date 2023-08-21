@@ -84,6 +84,16 @@ public class CameraScript : MonoBehaviour
     public int freddyCounter; //every 3.02 sec = 181,2 frames
     public int foxyCounter; //every 5.01 sec = 300,6 frames
 
+    [Header("MovementBools")]
+    public bool BonnieMoving;
+    public bool ChicaMoving;
+    public bool FreddyMoving;
+
+    [Header("Scripts")]
+    public SoundScript soundScript;
+    public OfficeScript officeScript;
+    public MainMenuScript mainMenuScript;
+
 
     /*
      Note:
@@ -119,7 +129,7 @@ public class CameraScript : MonoBehaviour
         EastHallCorner,
         OFFICE
     }
-    
+
 
 
     // Start is called before the first frame update
@@ -155,11 +165,134 @@ public class CameraScript : MonoBehaviour
             Freddy();
             Chica();
             Bonnie();
-            
+
             Foxy();
 
             LocationTracker();
+
+            soundScript.fanSoundLower.volume = 0.4f;
         }
+
+        #region sounds
+
+        //stops main menu sounds when a night starts
+        if (isGameActive == true)
+        {
+            soundScript.mainMenuSound.Stop();
+            soundScript.mainMenuSound1.Stop();
+        }
+
+        //plays when Chica is in the kitchen
+        if (ChicaLocation == Location.Kitchen)
+        {
+            soundScript.KitchenSounds();
+
+            //plays louder when cams are active
+            if (officeScript.AreCamsActive == true)
+            {
+                soundScript.kitchenSounds.volume = 1f;
+            }
+        }
+
+        //plays a different audio as Freddy gets closer
+        if (FreddyLocation == Location.DiningArea)
+        {
+            soundScript.FreddyLaugh1();
+        }
+
+        if (FreddyLocation == Location.Restrooms)
+        {
+            soundScript.FreddyLaugh2();
+        }
+
+        if (FreddyLocation == Location.EastHallCorner)
+        {
+            soundScript.FreddyLaugh3();
+        }
+
+        //plays if camera is active and an animatronic moves
+        if (officeScript.AreCamsActive == true)
+        {
+            if (BonnieMoving == true || ChicaMoving == true)
+            {
+                soundScript.AnimatronicMoving();
+            }
+            else if (FreddyDifficulty >= 1)
+            {
+                if (FreddyMoving == true)
+                {
+                    soundScript.AnimatronicMoving();
+                }
+            }
+        }
+
+        //plays an opening camera sound, a continous using camera sound and lowers the volume of the fan
+        if (officeScript.AreCamsActive == true)
+        {
+            soundScript.FanSoundLower();
+        }
+
+        if (officeScript.IsLeftDoorClosed == true || officeScript.IsRightDoorClosed == true)
+        {
+            if(BonnieLocation == Location.OFFICE || ChicaLocation == Location.OFFICE || FreddyLocation == Location.OFFICE || FoxyLocation == Location.OFFICE)
+            {
+                soundScript.DoorBanging();
+            }
+        }
+
+        //plays if an animatronic is the corner and player puts the light on during or after night 3
+        if (mainMenuScript.nightCounter >= 3)
+        {
+            if (BonnieLocation == Location.SupplyCloset)
+            {
+                if (officeScript.AreCamsActive == true)
+                {
+                    soundScript.AnimatronicAtCorner();
+                }
+            }
+
+            if (ChicaLocation == Location.EastHall)
+            {
+                if (officeScript.AreCamsActive == true)
+                {
+                    soundScript.AnimatronicAtCorner();
+                }
+            }
+        }
+
+        //plays if Bonnie is in the doorway and the left lights are switched on
+        if (officeScript.AreLeftLightsActive)
+        {
+            if (BonnieLocation == Location.OFFICE)
+            {
+                soundScript.AnimatronicInDoorway();
+            }
+        }
+
+        //plays if Chica is in the window and the right lights are switched on
+        if (officeScript.AreRightLightsActive) 
+        { 
+            if (ChicaLocation == Location.OFFICE)
+            {
+                soundScript.AnimatronicInDoorway();
+            }
+        }
+
+        if (officeScript.powerLeft <= 0f)
+        {
+            soundScript.PowerDown();
+        }
+
+        //plays if there is 0 power and freddy is in the office
+        if (officeScript.powerLeft == 0f)
+        {
+            if (FreddyLocation == Location.EastHallCorner)
+            {
+                soundScript.FreddyAtDoor();
+            }
+        }
+
+        #endregion
     }
 
     //AI~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
@@ -349,8 +482,14 @@ public class CameraScript : MonoBehaviour
                     Debug.Log("Bonnie in OFFICE");
                 }
 
-            }
+                BonnieMoving = true; //bool becomes true on a successful skill check
 
+            }
+        }
+
+        if (bonnieCounter >= 150) //might need some adjusting
+        {
+            BonnieMoving = false; //bool becomes false after some time has passed to allow for a safe range for sound to play
         }
     }
     private void Chica()
@@ -393,9 +532,16 @@ public class CameraScript : MonoBehaviour
                 {
                     ChicaLocation = Location.OFFICE; //danger zone
                 }
+                
+                ChicaMoving = true;
       
             }
 
+        }
+
+        if (chicaCounter >= 150) //might need some adjusting
+        {
+            ChicaMoving = false; //bool becomes false after some time has passed to allow for a safe range for sound to play
         }
     }
     private void Freddy()
@@ -426,6 +572,13 @@ public class CameraScript : MonoBehaviour
                 
             }
 
+            FreddyMoving = true;
+
+        }
+
+        if (freddyCounter >= 150) //might need some adjusting
+        {
+            FreddyMoving = false; //bool becomes false after some time has passed to allow for a safe range for sound to play
         }
     }
     private void Foxy()

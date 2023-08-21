@@ -6,6 +6,7 @@ using UnityEngine.UI;
 public class OfficeScript : MonoBehaviour
 {
     public CameraScript CameraScript;
+    public SoundScript soundScript;
 
     public float panSpeed = 3f; // Speed of background panning
     public RawImage backgroundImage; // Reference to the RawImage component
@@ -86,25 +87,36 @@ public class OfficeScript : MonoBehaviour
             AreLeftLightsActive = true;
             varA = 1;
             decVarA1 = 0.1f;
-            
+
+            if (AreLeftLightsActive == true)
+            {
+                Debug.Log("ll");
+                soundScript.UsingLeftLights();
+            }
         }
         else
         {
             AreLeftLightsActive = false;
             varA = 0;
             decVarA1 = 0f;
+
+            soundScript.usingLeftLights.Stop();
         }
         if (RightLightsContainer.activeSelf)
         {
             AreRightLightsActive = true;
             varB = 1;
             decVarB1 = 0.1f;
+
+            soundScript.UsingRightLights();
         }
         else
         {
             AreRightLightsActive = false;
             varB = 0;
             decVarB1 = 0f;
+
+            soundScript.usingRightLights.Stop();
         }
 
         //sets the camera navigation to active is space bar is clicked, if already active and spacebar is clicked then deactivates camNav
@@ -116,6 +128,7 @@ public class OfficeScript : MonoBehaviour
             decVarC1 = 0f;
 
             CameraScript.inCams = false;
+            soundScript.usingCams.Stop();
         }
         else if(Input.GetKeyDown(KeyCode.Space))
         {
@@ -125,6 +138,9 @@ public class OfficeScript : MonoBehaviour
             decVarC1 = 0.1f;
 
             CameraScript.inCams = true;
+
+            soundScript.OpenCamera();
+            soundScript.UsingCams();
         }
 
         totalActiveBars = varA + varB + varC + varD + varE + 1;
@@ -195,7 +211,6 @@ public class OfficeScript : MonoBehaviour
         {
             chicaInWindow.SetActive(false);
         }
-
     }
 
     public void OnLeftDoorButtonClick()
@@ -206,6 +221,8 @@ public class OfficeScript : MonoBehaviour
             IsLeftDoorClosed = false;
             varD = 0;
             decVarD1 = 0f;
+
+            soundScript.ClosedDoor();
         }
         else
         {
@@ -213,6 +230,8 @@ public class OfficeScript : MonoBehaviour
             IsLeftDoorClosed = true;
             varD = 1;
             decVarD1 = 0.1f;
+
+            soundScript.ClosedDoor();
         }
     }
 
@@ -224,6 +243,8 @@ public class OfficeScript : MonoBehaviour
             IsRightDoorClosed = false;
             varE = 0;
             decVarE1 = 0f;
+
+            soundScript.ClosedDoor();
         }
         else
         {
@@ -231,6 +252,8 @@ public class OfficeScript : MonoBehaviour
             IsRightDoorClosed = true;
             varE = 1;
             decVarE1 = 0.1f;
+
+            soundScript.ClosedDoor();
         }
     }
 

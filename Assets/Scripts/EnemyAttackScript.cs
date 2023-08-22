@@ -93,7 +93,22 @@ public class EnemyAttackScript : MonoBehaviour
             }
         }
 
-        
+        //---------------------------------------------------------
+        if (OfficeScript.powerLeft <= 0)
+        {
+            //Power shuts down (dark room)
+
+            //After 1 sec, Freddy starts to play music (and flickers eye-lights for 5 to 15 sec (random)
+
+            //Screen completely darken, player just hears Freddy now walinkg around for 2 to 10 sec (random)
+
+            //Attack
+            PlayFreddyJumpScare();
+
+        }
+        //--------------------------------------------------------
+
+
     }
 
     public void PlayBonnieJumpScare()

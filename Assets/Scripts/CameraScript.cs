@@ -94,6 +94,7 @@ public class CameraScript : MonoBehaviour
     public OfficeScript officeScript;
     public MainMenuScript mainMenuScript;
 
+
     /*
      Note:
         From ExitScript

@@ -5,9 +5,12 @@ EditorBuildSettings:
   m_ObjectHideFlags: 0
   serializedVersion: 2
   m_Scenes:
+  - enabled: 0
+    path: 
+    guid: 00000000000000000000000000000000
   - enabled: 1
     path: Assets/Scenes/MainGame.unity
-    guid: 9fc0d4010bbf28b4594072e72b8655ab
+    guid: ccea8b77feefa074183b18d1aa87f381
   - enabled: 1
     path: Assets/Scenes/BonnieJumpScare.unity
     guid: ff8f011c798db6e4d8277a51408e0637
@@ -20,4 +23,7 @@ EditorBuildSettings:
   - enabled: 1
     path: Assets/Scenes/FoxyJumpScare.unity
     guid: 3b6ceb5934d9c4a4e817e7524effd151
+  - enabled: 1
+    path: Assets/Scenes/6AM.unity
+    guid: cfc3297bb48c4c345b2439f83c14fcb7
   m_configObjects: {}

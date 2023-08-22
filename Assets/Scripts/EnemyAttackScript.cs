@@ -97,7 +97,7 @@ public class EnemyAttackScript : MonoBehaviour
         //---------------------------------------------------------
         if (OfficeScript.powerLeft <= 0)
         {
-            //Power shuts down (dark room)
+            //Power shuts down (dark room) -> stop all animatronics from attacking (isGameActive = false???)
 
             //After 1 sec, Freddy starts to play music (and flickers eye-lights for 5 to 15 sec (random)
 

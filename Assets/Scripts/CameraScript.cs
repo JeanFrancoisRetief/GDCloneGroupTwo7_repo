@@ -137,7 +137,7 @@ public class CameraScript : MonoBehaviour
     {
         //initial state
         isGameActive = false; //--------------------------------------------------------true for testing,    SET TO false FOR FINAL GAME!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!
-        inCams = true;      //--------------------------------------------------------false for testing,   SET TO true  FOR FINAL GAME!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!
+        inCams = false;      //--------------------------------------------------------false for testing,   SET TO true  FOR FINAL GAME!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!
 
         //initial cam
         MainStage.gameObject.SetActive(true);
@@ -188,7 +188,7 @@ public class CameraScript : MonoBehaviour
             soundScript.KitchenSounds();
 
             //plays louder when cams are active
-            if (officeScript.AreCamsActive == true)
+            if (inCams == true)
             {
                 soundScript.kitchenSounds.volume = 1f;
             }
@@ -211,7 +211,7 @@ public class CameraScript : MonoBehaviour
         }
 
         //plays if camera is active and an animatronic moves
-        if (officeScript.AreCamsActive == true)
+        if (inCams == true)
         {
             if (BonnieMoving == true || ChicaMoving == true)
             {
@@ -227,7 +227,7 @@ public class CameraScript : MonoBehaviour
         }
 
         //plays an opening camera sound, a continous using camera sound and lowers the volume of the fan
-        if (officeScript.AreCamsActive == true)
+        if (inCams == true)
         {
             soundScript.FanSoundLower();
         }
@@ -245,7 +245,7 @@ public class CameraScript : MonoBehaviour
         {
             if (BonnieLocation == Location.SupplyCloset)
             {
-                if (officeScript.AreCamsActive == true)
+                if (inCams == true)
                 {
                     soundScript.AnimatronicAtCorner();
                 }
@@ -253,7 +253,7 @@ public class CameraScript : MonoBehaviour
 
             if (ChicaLocation == Location.EastHall)
             {
-                if (officeScript.AreCamsActive == true)
+                if (inCams == true)
                 {
                     soundScript.AnimatronicAtCorner();
                 }

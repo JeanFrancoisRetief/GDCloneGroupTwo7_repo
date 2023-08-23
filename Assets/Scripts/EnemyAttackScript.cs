@@ -131,10 +131,12 @@ public class EnemyAttackScript : MonoBehaviour
             }
 
             runOnce = true;
+            if (runOnce)
+            {
+                FreddyPowerOutAttackCounter--;
+                FreddyFlickerCounter--;
+            }
         }
-
-        FreddyPowerOutAttackCounter--;
-        FreddyFlickerCounter--;
         //--------------------------------------------------------
 
 

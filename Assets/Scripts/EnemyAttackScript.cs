@@ -19,7 +19,7 @@ public class EnemyAttackScript : MonoBehaviour
         BonnieAttackCounter = 15 * 60;
         ChicaAttackCounter = 15 * 60;
         FreddyAttackCounter = 20 * 60;
-        FoxyRunCounter = 2 * 60;
+        FoxyRunCounter = 4 * 60;
     }
 
     // Update is called once per frame
@@ -88,12 +88,28 @@ public class EnemyAttackScript : MonoBehaviour
             else if ((FoxyRunCounter <= 0) && (OfficeScript.IsLeftDoorClosed))
             {
                 CameraScript.FoxyStage = 2;
-                FoxyRunCounter = 2 * 60;
+                CameraScript.foxyCounter = 0;
+                FoxyRunCounter = 4 * 60;
                 SoundScript.DoorBanging();
             }
         }
 
-        
+        //---------------------------------------------------------
+        if (OfficeScript.powerLeft <= 0)
+        {
+            //Power shuts down (dark room) -> stop all animatronics from attacking (isGameActive = false???)
+
+            //After 1 sec, Freddy starts to play music (and flickers eye-lights for 5 to 15 sec (random)
+
+            //Screen completely darken, player just hears Freddy now walinkg around for 2 to 10 sec (random)
+
+            //Attack
+            PlayFreddyJumpScare();
+
+        }
+        //--------------------------------------------------------
+
+
     }
 
     public void PlayBonnieJumpScare()

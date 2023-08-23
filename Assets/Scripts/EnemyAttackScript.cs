@@ -13,6 +13,13 @@ public class EnemyAttackScript : MonoBehaviour
     public int ChicaAttackCounter;
     public int FreddyAttackCounter;
     public int FoxyRunCounter;
+
+    public GameObject BlackOut;
+    public GameObject OfficePower;
+    public int FreddyFlickerCounter;
+    public int FreddyPowerOutAttackCounter;
+
+    public bool runOnce = false;
     // Start is called before the first frame update
     void Start()
     {
@@ -62,8 +69,14 @@ public class EnemyAttackScript : MonoBehaviour
             FreddyAttackCounter--;
             if ((FreddyAttackCounter <= 0) && !(OfficeScript.IsRightDoorClosed))
             {
-                PlayFreddyJumpScare();
+                if (OfficeScript.powerLeft > 0)
+                {
+                    PlayFreddyJumpScare();
+                }
+                else
+                {
 
+                }
             }
             else if ((FreddyAttackCounter <= 0) && (OfficeScript.IsRightDoorClosed))
             {
@@ -95,18 +108,33 @@ public class EnemyAttackScript : MonoBehaviour
         }
 
         //---------------------------------------------------------
-        if (OfficeScript.powerLeft <= 0)
+        if (OfficeScript.powerLeft == 0 && runOnce == false)
         {
-            //Power shuts down (dark room) -> stop all animatronics from attacking (isGameActive = false???)
 
-            //After 1 sec, Freddy starts to play music (and flickers eye-lights for 5 to 15 sec (random)
+           OfficePower.SetActive(false); //Power shuts down (dark room) -> stop all animatronics from attacking (isGameActive = false???)
 
-            //Screen completely darken, player just hears Freddy now walinkg around for 2 to 10 sec (random)
+           BlackOut.SetActive(true);
 
-            //Attack
-            PlayFreddyJumpScare();
+                //Screen completely darken, player just hears Freddy now walinkg around for 2 to 10 sec (random)
+           FreddyPowerOutAttackCounter = Random.Range(60, 240);
 
+           if (FreddyPowerOutAttackCounter == 0)
+            {
+               //After 1 sec, Freddy starts to play music (and flickers eye-lights for 5 to 15 sec (random)
+               FreddyFlickerCounter = Random.Range(240, 900);
+               FreddyFlickerCounter--;
+
+               if (FreddyFlickerCounter <= 0)
+                {
+                   PlayFreddyJumpScare();
+                }
+            }
+
+            runOnce = true;
         }
+
+        FreddyPowerOutAttackCounter--;
+        FreddyFlickerCounter--;
         //--------------------------------------------------------
 
 

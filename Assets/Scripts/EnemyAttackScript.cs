@@ -89,12 +89,15 @@ public class EnemyAttackScript : MonoBehaviour
             }
         }
 
-        if ((CameraScript.FoxyStage >= 4))
+        if ((CameraScript.FoxyStage == 4))
         {
             //Play Foxy RUNING NOISE------------------
             SoundScript.FoxyRunnning();
+            CameraScript.FoxyStage += 1;
+        }
 
-            //----------------------------------------
+        if ((CameraScript.FoxyStage >= 5))
+        {
             FoxyRunCounter--;
             if ((FoxyRunCounter <= 0) && !(OfficeScript.IsLeftDoorClosed))
             {
@@ -119,6 +122,7 @@ public class EnemyAttackScript : MonoBehaviour
             CameraScript.isGameActive = false; //Game is no longer active to stop usual animatronic movement
             AdvantageousSounds.SetActive(false);
             EnvironmentalSounds.SetActive(false);
+            SoundScript.PowerDown();
 
             if (runOnce == false)
             {
@@ -134,6 +138,8 @@ public class EnemyAttackScript : MonoBehaviour
 
                 if (FreddyPowerOutAttackCounter <= 0)
                 {
+                    SoundScript.powerDown.Stop();
+                    SoundScript.FreddyAtDoor();
                     StartCoroutine(BlackSquareOnOff());
                     FreddyFlickerCounter--;
                 }

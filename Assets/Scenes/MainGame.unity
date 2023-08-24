@@ -12085,6 +12085,9 @@ MonoBehaviour:
   FoxyRunCounter: 0
   BlackOut: {fileID: 280209528}
   OfficePower: {fileID: 1656568092}
+  BlackSquare: {fileID: 1376569041}
+  AdvantageousSounds: {fileID: 2030850851}
+  EnvironmentalSounds: {fileID: 842669614}
   FreddyFlickerCounter: 0
   FreddyPowerOutAttackCounter: 0
   runOnce: 0

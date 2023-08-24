@@ -16,6 +16,9 @@ public class EnemyAttackScript : MonoBehaviour
 
     public GameObject BlackOut;
     public GameObject OfficePower;
+    public GameObject BlackSquare;
+    public GameObject AdvantageousSounds;
+    public GameObject EnvironmentalSounds;
     public int FreddyFlickerCounter;
     public int FreddyPowerOutAttackCounter;
 
@@ -108,38 +111,46 @@ public class EnemyAttackScript : MonoBehaviour
         }
 
         //---------------------------------------------------------
-        if (OfficeScript.powerLeft == 0 && runOnce == false)
+        if (OfficeScript.powerLeft == 0)
         {
 
-           OfficePower.SetActive(false); //Power shuts down (dark room) -> stop all animatronics from attacking (isGameActive = false???)
+            OfficePower.SetActive(false); 
+            BlackOut.SetActive(true); //Power shuts down (dark room)
+            CameraScript.isGameActive = false; //Game is no longer active to stop usual animatronic movement
+            AdvantageousSounds.SetActive(false);
+            EnvironmentalSounds.SetActive(false);
 
-           BlackOut.SetActive(true);
-
-                //Screen completely darken, player just hears Freddy now walinkg around for 2 to 10 sec (random)
-           FreddyPowerOutAttackCounter = Random.Range(60, 240);
-
-           if (FreddyPowerOutAttackCounter == 0)
+            if (runOnce == false)
             {
-               //After 1 sec, Freddy starts to play music (and flickers eye-lights for 5 to 15 sec (random)
-               FreddyFlickerCounter = Random.Range(240, 900);
-               FreddyFlickerCounter--;
+                FreddyPowerOutAttackCounter = Random.Range(60, 240); //Player just hears Freddy now walinkg around for 2 to 4 sec (random)
+                FreddyFlickerCounter = Random.Range(240, 900); //Freddy shows up in left door and eyes flicker for 4 to 15 sec (random)
 
-               if (FreddyFlickerCounter <= 0)
-                {
-                   PlayFreddyJumpScare();
-                }
+                runOnce = true;
             }
 
-            runOnce = true;
-            if (runOnce)
+            if (runOnce == true)
             {
                 FreddyPowerOutAttackCounter--;
-                FreddyFlickerCounter--;
+
+                if (FreddyPowerOutAttackCounter <= 0)
+                {
+                    StartCoroutine(BlackSquareOnOff());
+                    FreddyFlickerCounter--;
+                }
+
+               if (FreddyFlickerCounter <= 0)
+               {
+                   PlayFreddyJumpScare();
+               }
             }
         }
-        //--------------------------------------------------------
+    }
 
-
+    public IEnumerator BlackSquareOnOff()
+    {
+        BlackSquare.SetActive(false);
+        yield return new WaitForSeconds(1f);
+        BlackSquare.SetActive(true);
     }
 
     public void PlayBonnieJumpScare()

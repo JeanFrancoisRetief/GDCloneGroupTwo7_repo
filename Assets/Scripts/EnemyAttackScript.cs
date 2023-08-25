@@ -13,6 +13,16 @@ public class EnemyAttackScript : MonoBehaviour
     public int ChicaAttackCounter;
     public int FreddyAttackCounter;
     public int FoxyRunCounter;
+
+    public GameObject BlackOut;
+    public GameObject OfficePower;
+    public GameObject BlackSquare;
+    public GameObject AdvantageousSounds;
+    public GameObject EnvironmentalSounds;
+    public int FreddyFlickerCounter;
+    public int FreddyPowerOutAttackCounter;
+
+    public bool runOnce = false;
     // Start is called before the first frame update
     void Start()
     {
@@ -62,8 +72,14 @@ public class EnemyAttackScript : MonoBehaviour
             FreddyAttackCounter--;
             if ((FreddyAttackCounter <= 0) && !(OfficeScript.IsRightDoorClosed))
             {
-                PlayFreddyJumpScare();
+                if (OfficeScript.powerLeft > 0)
+                {
+                    PlayFreddyJumpScare();
+                }
+                else
+                {
 
+                }
             }
             else if ((FreddyAttackCounter <= 0) && (OfficeScript.IsRightDoorClosed))
             {
@@ -73,12 +89,15 @@ public class EnemyAttackScript : MonoBehaviour
             }
         }
 
-        if ((CameraScript.FoxyStage >= 4))
+        if ((CameraScript.FoxyStage == 4))
         {
             //Play Foxy RUNING NOISE------------------
             SoundScript.FoxyRunnning();
+            CameraScript.FoxyStage += 1;
+        }
 
-            //----------------------------------------
+        if ((CameraScript.FoxyStage >= 5))
+        {
             FoxyRunCounter--;
             if ((FoxyRunCounter <= 0) && !(OfficeScript.IsLeftDoorClosed))
             {
@@ -95,21 +114,49 @@ public class EnemyAttackScript : MonoBehaviour
         }
 
         //---------------------------------------------------------
-        if (OfficeScript.powerLeft <= 0)
+        if (OfficeScript.powerLeft == 0)
         {
-            //Power shuts down (dark room) -> stop all animatronics from attacking (isGameActive = false???)
 
-            //After 1 sec, Freddy starts to play music (and flickers eye-lights for 5 to 15 sec (random)
+            OfficePower.SetActive(false); 
+            BlackOut.SetActive(true); //Power shuts down (dark room)
+            CameraScript.isGameActive = false; //Game is no longer active to stop usual animatronic movement
+            AdvantageousSounds.SetActive(false);
+            EnvironmentalSounds.SetActive(false);
+            SoundScript.PowerDown();
 
-            //Screen completely darken, player just hears Freddy now walinkg around for 2 to 10 sec (random)
+            if (runOnce == false)
+            {
+                FreddyPowerOutAttackCounter = Random.Range(60, 240); //Player just hears Freddy now walinkg around for 2 to 4 sec (random)
+                FreddyFlickerCounter = Random.Range(240, 900); //Freddy shows up in left door and eyes flicker for 4 to 15 sec (random)
 
-            //Attack
-            PlayFreddyJumpScare();
+                runOnce = true;
+            }
 
+            if (runOnce == true)
+            {
+                FreddyPowerOutAttackCounter--;
+
+                if (FreddyPowerOutAttackCounter <= 0)
+                {
+                    SoundScript.powerDown.Stop();
+                    SoundScript.FreddyAtDoor();
+                    StartCoroutine(BlackSquareOnOff());
+                    FreddyFlickerCounter--;
+                }
+
+               if (FreddyFlickerCounter <= 0)
+               {
+                   PlayFreddyJumpScare();
+               }
+            }
         }
-        //--------------------------------------------------------
+    }
 
-
+    public IEnumerator BlackSquareOnOff()
+    {
+        BlackSquare.SetActive(false);
+        yield return new WaitForSeconds(1f);
+        BlackSquare.SetActive(true);
     }
 
     public void PlayBonnieJumpScare()

@@ -137,7 +137,7 @@ public class CameraScript : MonoBehaviour
     {
         //initial state
         isGameActive = false; //--------------------------------------------------------true for testing,    SET TO false FOR FINAL GAME!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!
-        inCams = true;      //--------------------------------------------------------false for testing,   SET TO true  FOR FINAL GAME!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!
+        inCams = false;      //--------------------------------------------------------false for testing,   SET TO true  FOR FINAL GAME!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!
 
         //initial cam
         MainStage.gameObject.SetActive(true);
@@ -171,6 +171,7 @@ public class CameraScript : MonoBehaviour
             LocationTracker();
 
             soundScript.fanSoundLower.volume = 0.4f;
+            soundScript.PhoneCall();
         }
 
         #region sounds
@@ -183,51 +184,30 @@ public class CameraScript : MonoBehaviour
         }
 
         //plays when Chica is in the kitchen
-        if (ChicaLocation == Location.Kitchen)
+        if (ChicaLocation == Location.Restrooms)
         {
             soundScript.KitchenSounds();
 
             //plays louder when cams are active
-            if (officeScript.AreCamsActive == true)
+            if (inCams == true)
             {
                 soundScript.kitchenSounds.volume = 1f;
             }
         }
 
         //plays a different audio as Freddy gets closer
-        if (FreddyLocation == Location.DiningArea)
+        if (FreddyLocation == Location.Restrooms)
         {
             soundScript.FreddyLaugh1();
         }
 
-        if (FreddyLocation == Location.Restrooms)
+        if (FreddyLocation == Location.EastHallCorner)
         {
             soundScript.FreddyLaugh2();
         }
 
-        if (FreddyLocation == Location.EastHallCorner)
-        {
-            soundScript.FreddyLaugh3();
-        }
-
-        //plays if camera is active and an animatronic moves
-        if (officeScript.AreCamsActive == true)
-        {
-            if (BonnieMoving == true || ChicaMoving == true)
-            {
-                soundScript.AnimatronicMoving();
-            }
-            else if (FreddyDifficulty >= 1)
-            {
-                if (FreddyMoving == true)
-                {
-                    soundScript.AnimatronicMoving();
-                }
-            }
-        }
-
         //plays an opening camera sound, a continous using camera sound and lowers the volume of the fan
-        if (officeScript.AreCamsActive == true)
+        if (inCams == true)
         {
             soundScript.FanSoundLower();
         }
@@ -245,7 +225,7 @@ public class CameraScript : MonoBehaviour
         {
             if (BonnieLocation == Location.SupplyCloset)
             {
-                if (officeScript.AreCamsActive == true)
+                if (inCams == true)
                 {
                     soundScript.AnimatronicAtCorner();
                 }
@@ -253,7 +233,7 @@ public class CameraScript : MonoBehaviour
 
             if (ChicaLocation == Location.EastHall)
             {
-                if (officeScript.AreCamsActive == true)
+                if (inCams == true)
                 {
                     soundScript.AnimatronicAtCorner();
                 }
@@ -276,11 +256,6 @@ public class CameraScript : MonoBehaviour
             {
                 soundScript.AnimatronicInDoorway();
             }
-        }
-
-        if (officeScript.powerLeft <= 0f)
-        {
-            soundScript.PowerDown();
         }
 
         //plays if there is 0 power and freddy is in the office

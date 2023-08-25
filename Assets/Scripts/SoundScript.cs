@@ -8,20 +8,24 @@ public class SoundScript : MonoBehaviour
     [Header("Main Menu")]
     public AudioSource mainMenuSound;
     public AudioSource mainMenuSound1;
+    public MainMenuScript mainMenuScript;
 
     [Header("Advantageous Sounds")]
     public AudioSource kitchenSounds;
 
     public AudioSource freddyLaugh1;
     public AudioSource freddyLaugh2;
-    public AudioSource freddyLaugh3;
-
-    public AudioSource animatronicMoving;
 
     public AudioSource foxyRunning;
     public AudioSource doorBanging;
 
     [Header("Environmental Sounds")]
+    public AudioSource telephoneNight1;
+    public AudioSource telephoneNight2;
+    public AudioSource telephoneNight3;
+    public AudioSource telephoneNight4;
+    public AudioSource telephoneNight5;
+
     public AudioSource openCamera;
     public AudioSource usingCams;
     public AudioSource fanSoundLower;
@@ -59,16 +63,6 @@ public class SoundScript : MonoBehaviour
     public void FreddyLaugh2()
     {
         freddyLaugh2.Play();
-    }
-
-    public void FreddyLaugh3()
-    {
-        freddyLaugh3.Play();
-    }
-
-    public void AnimatronicMoving()
-    {
-        animatronicMoving.Play();
     }
 
     public void FoxyRunnning()
@@ -151,26 +145,50 @@ public class SoundScript : MonoBehaviour
         }
     }
 
+    public void PhoneCall()
+    {
+        if (mainMenuScript.nightCounter == 1)
+        {
+            telephoneNight1.Play();
+        }
+        else if (mainMenuScript.nightCounter == 2)
+        {
+            telephoneNight2.Play();
+        }
+        else if (mainMenuScript.nightCounter == 3)
+        {
+            telephoneNight3.Play();
+        }
+        else if (mainMenuScript.nightCounter == 4)
+        {
+            telephoneNight4.Play();
+        }
+        if (mainMenuScript.nightCounter == 5)
+        {
+            telephoneNight5.Play();
+        }
+    }
+
     public void CheckRandomCounter()
     {
-        randomCounter = UnityEngine.Random.Range(0, 60);
+        randomCounter = UnityEngine.Random.Range(0, 100);
 
-        if (randomCounter == 15)
+        if (randomCounter == 25)
         {
             organSong.Play();
         }
 
-        if (randomCounter == 30)
+        if (randomCounter == 50)
         {
-            foxyRunning.Play();
+            foxySinging.Play();
         }
 
-        if (randomCounter == 45)
+        if (randomCounter == 75)
         {
             swirlingNoise.Play();
         }
 
-        if (randomCounter == 60)
+        if (randomCounter == 100)
         {
             subtleNoises.Play();
         }

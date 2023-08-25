@@ -25,14 +25,13 @@ public class OfficeScript : MonoBehaviour
     public GameObject RightDoor;
 
     public GameObject bonnieInDoor;
+    public GameObject bonnieShadow;
     public GameObject chicaInWindow;
 
     public bool IsLeftDoorClosed;
     public bool IsRightDoorClosed;
 
     public GameObject camNav;
-
-    public bool AreCamsActive;
 
     private int varA = 0;
     private int varB = 0;
@@ -120,28 +119,29 @@ public class OfficeScript : MonoBehaviour
         }
 
         //sets the camera navigation to active is space bar is clicked, if already active and spacebar is clicked then deactivates camNav
-        if (Input.GetKeyDown(KeyCode.Space) && camNav.activeInHierarchy == true)
+        if (powerLeft > 0)
         {
-            camNav.SetActive(false);
-            AreCamsActive = false;
-            varC = 0;
-            decVarC1 = 0f;
+            if (Input.GetKeyDown(KeyCode.Space) && camNav.activeInHierarchy == true)
+            {
+                camNav.SetActive(false);
+                CameraScript.inCams = false;
+                varC = 0;
+                decVarC1 = 0f;
 
-            CameraScript.inCams = false;
-            soundScript.usingCams.Stop();
+                soundScript.usingCams.Stop();
+            }
+            else if (Input.GetKeyDown(KeyCode.Space))
+            {
+                camNav.SetActive(true);
+                CameraScript.inCams = true;
+                varC = 1;
+                decVarC1 = 0.1f;
+
+                soundScript.OpenCamera();
+                soundScript.UsingCams();
+            }
         }
-        else if(Input.GetKeyDown(KeyCode.Space))
-        {
-            camNav.SetActive(true);
-            AreCamsActive = true;
-            varC = 1;
-            decVarC1 = 0.1f;
 
-            CameraScript.inCams = true;
-
-            soundScript.OpenCamera();
-            soundScript.UsingCams();
-        }
 
         totalActiveBars = varA + varB + varC + varD + varE + 1;
 
@@ -198,10 +198,12 @@ public class OfficeScript : MonoBehaviour
         if(CameraScript.BonnieLocation == CameraScript.Location.OFFICE)
         {
             bonnieInDoor.SetActive(true);
+            bonnieShadow.SetActive(true);
         }
         else
         {
             bonnieInDoor.SetActive(false);
+            bonnieShadow.SetActive(false);
         }
         if(CameraScript.ChicaLocation == CameraScript.Location.OFFICE)
         {
@@ -215,24 +217,28 @@ public class OfficeScript : MonoBehaviour
 
     public void OnLeftDoorButtonClick()
     {
-        if(LeftDoor.activeInHierarchy == true)
+        if (!CameraScript.inCams)
         {
-            LeftDoor.SetActive(false);
-            IsLeftDoorClosed = false;
-            varD = 0;
-            decVarD1 = 0f;
+            if (LeftDoor.activeInHierarchy == true)
+            {
+                LeftDoor.SetActive(false);
+                IsLeftDoorClosed = false;
+                varD = 0;
+                decVarD1 = 0f;
 
-            soundScript.ClosedDoor();
-        }
-        else
-        {
-            LeftDoor.SetActive(true);
-            IsLeftDoorClosed = true;
-            varD = 1;
-            decVarD1 = 0.1f;
+                soundScript.ClosedDoor();
+            }
+            else
+            {
+                LeftDoor.SetActive(true);
+                IsLeftDoorClosed = true;
+                varD = 1;
+                decVarD1 = 0.1f;
 
-            soundScript.ClosedDoor();
+                soundScript.ClosedDoor();
+            }
         }
+       
     }
 
     public void OnRightDoorButtonClick()
@@ -256,6 +262,8 @@ public class OfficeScript : MonoBehaviour
             soundScript.ClosedDoor();
         }
     }
+
+    
 
     private void UpdatePowerText()
     {

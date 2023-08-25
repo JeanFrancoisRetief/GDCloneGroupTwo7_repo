@@ -6643,7 +6643,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: 499, y: 487}
+  m_AnchoredPosition: {x: 499, y: 488}
   m_SizeDelta: {x: 1000, y: 83.27}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &949942924
@@ -8908,8 +8908,8 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: 288.9641, y: 185}
-  m_SizeDelta: {x: 1266.9956, y: 500}
+  m_AnchoredPosition: {x: 288.9641, y: 192.60101}
+  m_SizeDelta: {x: 1266.9956, y: 552.798}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &1265503885
 MonoBehaviour:
@@ -8944,17 +8944,19 @@ MonoBehaviour:
     m_HorizontalOverflow: 0
     m_VerticalOverflow: 0
     m_LineSpacing: 1
-  m_Text: "-Press SPACEBAR to enter/exit cameras\n\n-Alternate checking the cameras
-    and the door lights as often as possible.\n\n-If Bonnie (the purple/blue bunny)
-    shows up outside the left door, close it until he leaves.\r\n\n-If Chica (the
-    yellow chicken) shows up outside the right window, close the right door until
-    she leaves.\r\n\n-If Freddy (the brown bear) shows up in the \u201CEast Hall
-    Corner\u201D camera, close the right door immediately and keep it closed until
-    he leaves.\r\n\n-Keep an eye on Foxy in Pirates cove, if he is no longer there
-    or if you hear him running, close the left door immediately and keep it closed
-    until he returns to pirate cove.\r\n\n-If the cameras are on, foxy wont move.\r\n\n-The
-    cameras, doors and lights all consume power.\r\n\n-If you run out of power, the
-    doors will open, and Freddy will come for you.\r\n\n-SURVIVE UNTIL 6AM.\r\n"
+  m_Text: "-Press SPACEBAR to enter/exit cameras\n-Left Click on the Red Door Buttons
+    to close the doors\n-Hold down Left Click on Light Buttons to turn on lights\n-Alternate
+    checking the cameras and the door lights as often as possible.\n\n-If Bonnie
+    (the purple/blue bunny) shows up outside the left door, close it until he leaves.\r\n\n-If
+    Chica (the yellow chicken) shows up outside the right window, close the right
+    door until she leaves.\r\n\n-If Freddy (the brown bear) shows up in the \u201CEast
+    Hall Corner\u201D camera, close the right door immediately and keep it closed
+    until he leaves.\r\n\n-Keep an eye on Foxy in Pirates cove, if he is no longer
+    there or if you hear him running, close the left door immediately and keep it
+    closed until he returns to pirate cove.\r\n\n-If the cameras are on, foxy wont
+    move.\r\n\n-The cameras, doors and lights all consume power.\r\n\n-If you run
+    out of power, the doors will open, and Freddy will come for you.\r\n\n-SURVIVE
+    UNTIL 6AM.\r\n"
 --- !u!222 &1265503886
 CanvasRenderer:
   m_ObjectHideFlags: 0

@@ -171,24 +171,24 @@ public class SoundScript : MonoBehaviour
 
     public void CheckRandomCounter()
     {
-        randomCounter = UnityEngine.Random.Range(0, 60);
+        randomCounter = UnityEngine.Random.Range(0, 100);
 
-        if (randomCounter == 15)
+        if (randomCounter == 25)
         {
             organSong.Play();
         }
 
-        if (randomCounter == 30)
+        if (randomCounter == 50)
         {
             foxySinging.Play();
         }
 
-        if (randomCounter == 45)
+        if (randomCounter == 75)
         {
             swirlingNoise.Play();
         }
 
-        if (randomCounter == 60)
+        if (randomCounter == 100)
         {
             subtleNoises.Play();
         }

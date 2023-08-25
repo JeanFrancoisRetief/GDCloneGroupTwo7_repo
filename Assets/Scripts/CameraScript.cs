@@ -171,7 +171,6 @@ public class CameraScript : MonoBehaviour
             LocationTracker();
 
             soundScript.fanSoundLower.volume = 0.4f;
-            soundScript.PhoneCall();
         }
 
         #region sounds

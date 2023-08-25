@@ -20,12 +20,6 @@ public class SoundScript : MonoBehaviour
     public AudioSource doorBanging;
 
     [Header("Environmental Sounds")]
-    public AudioSource telephoneNight1;
-    public AudioSource telephoneNight2;
-    public AudioSource telephoneNight3;
-    public AudioSource telephoneNight4;
-    public AudioSource telephoneNight5;
-
     public AudioSource openCamera;
     public AudioSource usingCams;
     public AudioSource fanSoundLower;
@@ -142,30 +136,6 @@ public class SoundScript : MonoBehaviour
         {
             CheckRandomCounter();
             environmentalNoisesCounter = 0;
-        }
-    }
-
-    public void PhoneCall()
-    {
-        if (mainMenuScript.nightCounter == 1)
-        {
-            telephoneNight1.Play();
-        }
-        else if (mainMenuScript.nightCounter == 2)
-        {
-            telephoneNight2.Play();
-        }
-        else if (mainMenuScript.nightCounter == 3)
-        {
-            telephoneNight3.Play();
-        }
-        else if (mainMenuScript.nightCounter == 4)
-        {
-            telephoneNight4.Play();
-        }
-        if (mainMenuScript.nightCounter == 5)
-        {
-            telephoneNight5.Play();
         }
     }
 

@@ -19,10 +19,13 @@ public class EnemyAttackScript : MonoBehaviour
     public GameObject BlackSquare;
     public GameObject AdvantageousSounds;
     public GameObject EnvironmentalSounds;
+    public GameObject CameraPanel;
+    public GameObject UIPanel;
     public int FreddyFlickerCounter;
     public int FreddyPowerOutAttackCounter;
 
     public bool runOnce = false;
+    public bool runFlicker = false;
     // Start is called before the first frame update
     void Start()
     {
@@ -116,20 +119,27 @@ public class EnemyAttackScript : MonoBehaviour
         //---------------------------------------------------------
         if (OfficeScript.powerLeft == 0)
         {
-
             OfficePower.SetActive(false); 
             BlackOut.SetActive(true); //Power shuts down (dark room)
-            CameraScript.isGameActive = false; //Game is no longer active to stop usual animatronic movement
+            CameraPanel.SetActive(false);
+            UIPanel.SetActive(false);
+
+            BonnieAttackCounter = 15 * 60;
+            ChicaAttackCounter = 15 * 60;
+            FreddyAttackCounter = 20 * 60;
+            FoxyRunCounter = 4 * 60; //Game is no longer active to stop usual animatronic movement
+
             AdvantageousSounds.SetActive(false);
             EnvironmentalSounds.SetActive(false);
-            SoundScript.PowerDown();
 
             if (runOnce == false)
             {
                 FreddyPowerOutAttackCounter = Random.Range(60, 240); //Player just hears Freddy now walinkg around for 2 to 4 sec (random)
                 FreddyFlickerCounter = Random.Range(240, 900); //Freddy shows up in left door and eyes flicker for 4 to 15 sec (random)
+                SoundScript.PowerDown();
 
                 runOnce = true;
+
             }
 
             if (runOnce == true)
@@ -138,8 +148,13 @@ public class EnemyAttackScript : MonoBehaviour
 
                 if (FreddyPowerOutAttackCounter <= 0)
                 {
-                    SoundScript.powerDown.Stop();
-                    SoundScript.FreddyAtDoor();
+                    if (runFlicker == false)
+                    {
+                        SoundScript.FreddyAtDoor();
+
+                        runFlicker = true;
+                    }
+
                     StartCoroutine(BlackSquareOnOff());
                     FreddyFlickerCounter--;
                 }
@@ -155,7 +170,7 @@ public class EnemyAttackScript : MonoBehaviour
     public IEnumerator BlackSquareOnOff()
     {
         BlackSquare.SetActive(false);
-        yield return new WaitForSeconds(1f);
+        yield return new WaitForSeconds(0.1f);
         BlackSquare.SetActive(true);
     }
 

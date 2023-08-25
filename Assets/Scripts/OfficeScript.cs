@@ -23,21 +23,15 @@ public class OfficeScript : MonoBehaviour
 
     public GameObject LeftDoor;
     public GameObject RightDoor;
-   //public GameObject Eventyyyy;
 
     public GameObject bonnieInDoor;
     public GameObject bonnieShadow;
     public GameObject chicaInWindow;
 
-    //public Button LeftButt;
-    //public Button RightButt;
-
     public bool IsLeftDoorClosed;
     public bool IsRightDoorClosed;
 
     public GameObject camNav;
-
-    //public bool AreCamsActive;
 
     private int varA = 0;
     private int varB = 0;
@@ -125,37 +119,29 @@ public class OfficeScript : MonoBehaviour
         }
 
         //sets the camera navigation to active is space bar is clicked, if already active and spacebar is clicked then deactivates camNav
-        if (Input.GetKeyDown(KeyCode.Space) && camNav.activeInHierarchy == true)
+        if (powerLeft > 0)
         {
-           // AreRightLightsActive = true;
-            //AreRightLightsActive = false;
-            //Eventyyyy.SetActive(false);
-            //Eventyyyy.SetActive(true);
-            camNav.SetActive(false);
-            CameraScript.inCams = false;
-            varC = 0;
-            decVarC1 = 0f;
+            if (Input.GetKeyDown(KeyCode.Space) && camNav.activeInHierarchy == true)
+            {
+                camNav.SetActive(false);
+                CameraScript.inCams = false;
+                varC = 0;
+                decVarC1 = 0f;
 
-            //CameraScript.inCams = false;
-            soundScript.usingCams.Stop();
+                soundScript.usingCams.Stop();
+            }
+            else if (Input.GetKeyDown(KeyCode.Space))
+            {
+                camNav.SetActive(true);
+                CameraScript.inCams = true;
+                varC = 1;
+                decVarC1 = 0.1f;
+
+                soundScript.OpenCamera();
+                soundScript.UsingCams();
+            }
         }
-        else if(Input.GetKeyDown(KeyCode.Space))
-        {
-            //AreRightLightsActive = true;
-            //AreRightLightsActive = false;
-            //Eventyyyy.SetActive(false);
-            //Eventyyyy.SetActive(true);
-            
-            camNav.SetActive(true);
-            CameraScript.inCams = true;
-            varC = 1;
-            decVarC1 = 0.1f;
 
-            //CameraScript.inCams = true;
-
-            soundScript.OpenCamera();
-            soundScript.UsingCams();
-        }
 
         totalActiveBars = varA + varB + varC + varD + varE + 1;
 
